@@ -73,7 +73,7 @@
             font-weight: 400;
         }
         
-        /* ===== ENHANCED HERO BACKGROUND - GREEN WITH WHITE TEXT ===== */
+        /* ===== ENHANCED HERO BACKGROUND - DESIGN BACKGROUND RESTORED ===== */
         .hero-enhanced {
             position: relative;
             background: linear-gradient(145deg, #0a7e4a 0%, #0f5c3f 100%);
@@ -88,7 +88,7 @@
             color: white;
         }
         
-        /* Animated floating orbs - lighter for visibility on green */
+        /* Animated floating orbs - DESIGN BACKGROUND ELEMENTS */
         .hero-enhanced .orb-1 {
             position: absolute;
             top: -20%;
@@ -363,8 +363,29 @@
             padding-top: 2.5rem;
             padding-bottom: 2.5rem;
         }
+        .py-12 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
         .mt-12, .mt-16, .mt-20, .mt-24 {
             margin-top: 0;
+        }
+        
+        /* About section centered content */
+        .about-centered {
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        
+        .about-centered .flex-wrap {
+            justify-content: center;
+        }
+        
+        .about-centered .w-20.h-1.bg-accent {
+            margin-left: auto;
+            margin-right: auto;
         }
     </style>
 </head>
@@ -411,9 +432,9 @@
         </div>
     </header>
 
-    <!-- ===== HERO SECTION - GREEN BACKGROUND, WHITE HEADING, YELLOW BUTTON ===== -->
+    <!-- ===== HERO SECTION - GREEN BACKGROUND WITH DESIGN ELEMENTS, WHITE HEADING, YELLOW BUTTON ===== -->
     <section class="hero-enhanced py-20 md:py-28 relative">
-        <!-- Animated orbs -->
+        <!-- Animated orbs - DESIGN BACKGROUND RESTORED -->
         <div class="orb-1"></div>
         <div class="orb-2"></div>
         <div class="orb-3"></div>
@@ -444,52 +465,49 @@
         </div>
     </section>
 
-    <!-- ===== SECTION 1 · ABOUT SCHOOL ===== -->
+    <!-- ===== SECTION 1 · ABOUT SCHOOL - CENTERED CONTENT ===== -->
     <section id="about" class="anchor-offset py-20 bg-white">
         <div class="container mx-auto px-4">
-            <div class="grid lg:grid-cols-2 gap-12 items-center animate-on-scroll" id="about-animate">
-                <div>
-                    <h2 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold heading-primary leading-tight">
-                        A school built for <br><span class="heading-secondary">holistic excellence</span>
-                    </h2>
-                    <div class="w-20 h-1 bg-accent my-6"></div>
-                    <p class="content-text text-base sm:text-lg leading-relaxed">
-                        IDPS is a CBSE day-cum-boarding K12 school established by the region's pioneers in education, known as frontrunners in technical education. Conceived to lead change in school education, the school introduces a culture of holistic development — blending intensive academic training with extensive exposure. With an uncompromising stance on overall growth during schooling years, IDPS ensures every student is prepared for both competitive excellence and life.
-                    </p>
-                    <div class="flex flex-wrap gap-6 mt-8">
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">CBSE Affiliation</span></div>
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">Day cum Boarding</span></div>
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">K12 Curriculum</span></div>
-                    </div>
-                </div>
-                <div class="flex justify-center lg:justify-end">
-                    <!-- IMAGE REMOVED FROM ABOUT SECTION -->
+            <div class="about-centered animate-on-scroll" id="about-animate">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold heading-primary leading-tight">
+                    A school built for <br><span class="heading-secondary">holistic excellence</span>
+                </h2>
+                <div class="w-20 h-1 bg-accent my-6"></div>
+                <p class="content-text text-base sm:text-lg leading-relaxed max-w-3xl mx-auto">
+                    IDPS is a CBSE day-cum-boarding K12 school established by the region's pioneers in education, known as frontrunners in technical education. Conceived to lead change in school education, the school introduces a culture of holistic development — blending intensive academic training with extensive exposure. With an uncompromising stance on overall growth during schooling years, IDPS ensures every student is prepared for both competitive excellence and life.
+                </p>
+                <div class="flex flex-wrap gap-6 mt-8 justify-center">
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">CBSE Affiliation</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">Day cum Boarding</span></div>
+                    <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="content-text font-medium">K12 Curriculum</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SCHOLARSHIP SECTION ===== -->
+    <!-- ===== SCHOLARSHIP SECTION - SEPARATE BORDERS FOR INFO AND IMAGE ===== -->
     <section id="scholarship" class="anchor-offset py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="bg-white p-1 rounded-3xl shadow-md border-2 border-accent/60 hover:border-accent transition-all duration-300" id="scholarship-animate">
-                <div class="bg-white rounded-3xl p-8 md:p-10">
-                    <div class="grid lg:grid-cols-2 gap-8 items-center">
-                        <div>
-                            <h3 class="text-2xl md:text-3xl font-playfair font-bold heading-primary">IDPS Star Batch</h3>
-                            <p class="content-text text-lg mt-2 max-w-xl">Scholarship Test for students of Grade V to IX (NCERT).</p>
-                            <div class="flex flex-wrap gap-5 mt-6 content-text">
-                                <div class="flex items-center gap-2"><i data-lucide="calendar" class="text-primary w-5 h-5"></i> 1st March 2026 · 9:00 – 11:30 AM</div>
-                                <div class="flex items-center gap-2"><i data-lucide="percent" class="text-primary w-5 h-5"></i> Up to 100% scholarship</div>
-                                <div class="flex items-center gap-2"><i data-lucide="graduation-cap" class="text-primary w-5 h-5"></i> IIT-JEE/NEET foundation</div>
-                            </div>
-                        </div>
-                        <div class="flex justify-center lg:justify-end">
-                            <!-- IMAGE PLACED HERE IN SCHOLARSHIP SECTION -->
-                            <div class="relative">
-                                <img src="images/idps.jpeg" alt="IDPS Campus" class="img-campus rounded-3xl shadow-xl border-8 border-white" onerror="this.src='https://placehold.co/600x400/e2efe8/0a7e4a?text=IDPS+Ballari';">
-                            </div>
-                        </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Scholarship Info Card - Separate Border -->
+                <div class="bg-white rounded-3xl p-8 md:p-10 border-2 border-accent/60 hover:border-accent transition-all duration-300 shadow-md" id="scholarship-info-animate">
+                    <h3 class="text-2xl md:text-3xl font-playfair font-bold heading-primary">IDPS Star Batch</h3>
+                    <p class="content-text text-lg mt-2">Scholarship Test for students of Grade V to IX (NCERT).</p>
+                    <div class="flex flex-wrap gap-5 mt-6 content-text">
+                        <div class="flex items-center gap-2"><i data-lucide="calendar" class="text-primary w-5 h-5"></i> 1st March 2026 · 9:00 – 11:30 AM</div>
+                        <div class="flex items-center gap-2"><i data-lucide="percent" class="text-primary w-5 h-5"></i> Up to 100% scholarship</div>
+                        <div class="flex items-center gap-2"><i data-lucide="graduation-cap" class="text-primary w-5 h-5"></i> IIT-JEE/NEET foundation</div>
+                    </div>
+                    <div class="mt-6 bg-gray-50 px-6 py-4 rounded-xl border border-gray-200 inline-block">
+                        <span class="text-2xl font-bold text-primary">₹100</span>
+                        <span class="block text-xs text-gray-600 mt-0.5">Registration fee</span>
+                    </div>
+                </div>
+                
+                <!-- Image Card - Separate Border -->
+                <div class="bg-white rounded-3xl p-6 md:p-8 border-2 border-accent/60 hover:border-accent transition-all duration-300 shadow-md flex items-center justify-center" id="scholarship-image-animate">
+                    <div class="relative w-full">
+                        <img src="images/idps.jpeg" alt="IDPS Campus" class="img-campus rounded-2xl shadow-xl border-4 border-white" onerror="this.src='https://placehold.co/600x400/e2efe8/0a7e4a?text=IDPS+Ballari';">
                     </div>
                 </div>
             </div>
