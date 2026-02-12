@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>IDPS · Star Batch Scholarship 2026</title>
+  <!-- Tailwind (light) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Inter font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Lucide icons (official) -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- Simple AOS for very subtle fade -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    * {
+      font-family: 'Inter', sans-serif;
+    }
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      background-color: #fcfef9;
+    }
+    /* refined green & gold palette – no overused neon, sophisticated */
+    :root {
+      --deep-forest: #1f3b2c;    /* premium green, authoritative */
+      --soft-gold: #d8b14c;      /* muted gold, elegant */
+      --pale-sand: #f8f6f0;
+      --border-light: #e4e2da;
+    }
+    .bg-forest { background-color: #1f3b2c; }
+    .text-forest { color: #1f3b2c; }
+    .border-forest { border-color: #1f3b2c; }
+    .bg-gold { background-color: #d8b14c; }
+    .text-gold { color: #d8b14c; }
+    .border-gold { border-color: #d8b14c; }
+    .bg-sand { background-color: #f8f6f0; }
+
+    /* card style – minimal, subtle border, no heavy shadows */
+    .premium-card {
+      background-color: white;
+      border: 1px solid #efede8;
+      border-radius: 20px;
+      transition: all 0.2s ease;
+    }
+    .premium-card:hover {
+      border-color: #d8b14c;
+      background-color: white;
+      box-shadow: 0 12px 24px -12px rgba(31, 59, 44, 0.06);
+    }
+    /* stat chip – understated */
+    .chip {
+      border: 1px solid #e2dfd7;
+      background-color: white;
+      border-radius: 40px;
+      padding: 0.3rem 1.2rem;
+      font-weight: 500;
+      font-size: 0.85rem;
+      color: #1f3b2c;
+      letter-spacing: 0.3px;
+    }
+    /* no heavy animations; only subtle fade */
+    [data-aos] {
+      opacity: 0;
+      transition-property: opacity, transform;
+    }
+    [data-aos].aos-animate {
+      opacity: 1;
+    }
+    .anchor-offset {
+      scroll-margin-top: 100px;
+    }
+    .nav-link {
+      font-weight: 500;
+      color: #2a4235;
+      transition: 0.2s;
+      font-size: 0.95rem;
+      border-bottom: 1.5px solid transparent;
+      padding-bottom: 4px;
+    }
+    .nav-link:hover {
+      border-bottom-color: #d8b14c;
+      color: #1f3b2c;
+    }
+    /* lucide icons should be crisp */
+    .icon-sm { width: 18px; height: 18px; stroke-width: 1.8; }
+    .icon-md { width: 22px; height: 22px; stroke-width: 1.8; }
+    .icon-lg { width: 28px; height: 28px; stroke-width: 1.6; }
+  </style>
+</head>
+<body class="antialiased text-[#1f3b2c]">
+
+  <!-- ===== HEADER: International Delhi Public School (prominent) ===== -->
+  <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#efede8]">
+    <div class="max-w-7xl mx-auto px-6 lg:px-8 py-4 flex flex-wrap items-center justify-between">
+      <!-- school name – large, confident, no emoji -->
+      <div class="flex items-center gap-3">
+        <div class="w-1.5 h-8 bg-[#d8b14c] rounded-full"></div>
+        <h1 class="text-xl md:text-2xl font-bold text-[#1f3b2c] tracking-tight">
+          International <span class="bg-[#d8b14c]/10 px-3 py-1 rounded-md">Delhi Public School</span>
+        </h1>
+      </div>
+      
+      <!-- anchor navigation – clean, minimal -->
+      <nav class="hidden md:flex items-center gap-8">
+        <a href="#about" class="nav-link">About</a>
+        <a href="#scholarship" class="nav-link">Scholarship</a>
+        <a href="#benefits" class="nav-link">Benefits</a>
+        <a href="#exam" class="nav-link">Exam</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </nav>
+      
+      <!-- subtle badge -->
+      <div class="hidden sm:block chip text-xs bg-white">
+        2026–2027
+      </div>
+      <!-- mobile menu simplified -->
+      <div class="md:hidden flex items-center">
+        <span class="chip text-xs py-1.5">STAR BATCH</span>
+      </div>
+    </div>
+    <!-- mobile anchor row (simplest) -->
+    <div class="md:hidden flex justify-center gap-5 text-xs font-medium text-[#1f3b2c] py-2 border-t border-[#efede8] bg-white/90">
+      <a href="#about">About</a>
+      <a href="#scholarship">Scholarship</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#exam">Exam</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </header>
+
+  <main class="max-w-7xl mx-auto px-6 lg:px-8 py-12 md:py-16">
+
+    <!-- SECTION 1 · ABOUT SCHOOL (FIRST, NO EMOJI, LUCID ICONS) -->
+    <section id="about" class="anchor-offset scroll-mt-28 pb-12 md:pb-20">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <!-- left: about IDPS, crisp typography -->
+        <div data-aos="fade-right" data-aos-duration="600">
+          <div class="chip inline-flex items-center gap-2 mb-6 border-[#d8b14c]/30 bg-white">
+            <i data-lucide="shield" class="icon-sm text-[#d8b14c]"></i>
+            <span>EST. 2002 · BALLARI</span>
+          </div>
+          <h2 class="text-4xl md:text-5xl font-bold text-[#1f3b2c] leading-tight">
+            A Unit of International<br>Delhi Public School Society
+          </h2>
+          <div class="w-16 h-0.5 bg-[#d8b14c] my-6"></div>
+          <p class="text-[#4a5c52] text-lg leading-relaxed max-w-lg">
+            International Delhi Public School, Ballari, is recognized for academic rigor and competitive mentorship. The <span class="font-semibold text-[#1f3b2c]">Star Batch for Olympiads</span> is a specialized track for students in Grades V–IX to build foundation for IIT-JEE, NEET, and global Olympiads.
+          </p>
+          <div class="flex items-center gap-8 mt-10">
+            <div>
+              <span class="text-3xl font-bold text-[#1f3b2c]">500+</span>
+              <p class="text-sm text-[#6a7c72] mt-1">Olympiad selections</p>
+            </div>
+            <div class="w-px h-8 bg-[#d8b14c]/30"></div>
+            <div>
+              <span class="text-3xl font-bold text-[#1f3b2c]">#1</span>
+              <p class="text-sm text-[#6a7c72] mt-1">Ballari region</p>
+            </div>
+          </div>
+        </div>
+        <!-- right: subtle visual, no emoji, clean lucid icons -->
+        <div class="flex justify-center" data-aos="fade-left" data-aos-duration="600">
+          <div class="premium-card p-8 w-full max-w-md border border-[#e2dfd7] bg-white">
+            <div class="flex flex-col items-center text-center">
+              <div class="w-20 h-20 bg-[#d8b14c]/10 rounded-full flex items-center justify-center border border-[#d8b14c]/30">
+                <i data-lucide="landmark" class="w-10 h-10 text-[#1f3b2c] stroke-1"></i>
+              </div>
+              <h3 class="text-2xl font-bold text-[#1f3b2c] mt-5">International Delhi<br>Public School</h3>
+              <span class="chip mt-3 text-xs bg-[#f8f6f0] border-[#d8b14c]/20">IDPS SOCIETY · BALLARI</span>
+              <div class="grid grid-cols-3 gap-6 w-full mt-8 border-t border-[#efede8] pt-6">
+                <div class="flex flex-col items-center">
+                  <i data-lucide="flask" class="icon-md text-[#1f3b2c] mb-1"></i>
+                  <span class="text-xs font-medium">Labs</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <i data-lucide="users" class="icon-md text-[#1f3b2c] mb-1"></i>
+                  <span class="text-xs font-medium">Mentors</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <i data-lucide="trophy" class="icon-md text-[#d8b14c] mb-1"></i>
+                  <span class="text-xs font-medium">Star Batch</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- thin divider -->
+    <div class="w-full border-t border-[#efede8] my-16"></div>
+
+    <!-- SECTION 2 · SCHOLARSHIP TEST (clean, minimal card, no emoji) -->
+    <section id="scholarship" class="anchor-offset scroll-mt-28">
+      <div class="bg-[#1f3b2c] rounded-3xl px-10 py-12 md:py-14 text-white" data-aos="fade-up" data-aos-duration="600">
+        <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
+          <div>
+            <div class="chip bg-white/10 text-white border-white/20 inline-flex items-center gap-2 mb-4">
+              <i data-lucide="award" class="icon-sm text-[#d8b14c]"></i>
+              <span>2026–2027 · SCHOLARSHIP TEST</span>
+            </div>
+            <h3 class="text-3xl md:text-4xl font-bold text-white">IDPS Star Batch</h3>
+            <p class="text-[#e0dfd7] text-lg mt-2 max-w-xl">For students of Grade V to IX (NCERT Syllabus).</p>
+          </div>
+          <div class="flex flex-col sm:flex-row items-center gap-5 w-full lg:w-auto">
+            <div class="bg-white/10 backdrop-blur-none px-7 py-4 rounded-xl border border-white/20">
+              <span class="text-2xl font-bold text-[#d8b14c]">₹100</span>
+              <span class="block text-xs text-white/80 mt-0.5">Registration fee</span>
+            </div>
+            <button class="bg-[#d8b14c] text-[#1f3b2c] px-10 py-4 rounded-xl font-bold text-base hover:bg-[#c9a43b] transition w-full sm:w-auto flex items-center justify-center gap-2">
+              <i data-lucide="edit" class="icon-sm"></i>
+              Register now
+            </button>
+          </div>
+        </div>
+        <div class="flex flex-wrap gap-6 mt-10 text-sm text-white/90">
+          <div class="flex items-center gap-2"><i data-lucide="calendar" class="icon-sm text-[#d8b14c]"></i> 1st March 2026 · 9:00 – 11:30 AM</div>
+          <div class="flex items-center gap-2"><i data-lucide="percent" class="icon-sm text-[#d8b14c]"></i> Up to 100% scholarship</div>
+          <div class="flex items-center gap-2"><i data-lucide="graduation-cap" class="icon-sm text-[#d8b14c]"></i> IIT-JEE/NEET foundation</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION 3 · BENEFITS (clean cards, no emoji, lucid icons) -->
+    <section id="benefits" class="anchor-offset scroll-mt-28 mt-28">
+      <div class="text-center max-w-2xl mx-auto" data-aos="fade-down" data-aos-duration="600">
+        <span class="chip border-[#d8b14c]/40 bg-white inline-flex items-center gap-2">
+          <i data-lucide="sparkles" class="icon-sm text-[#d8b14c]"></i>
+          WHY STAR BATCH
+        </span>
+        <h2 class="text-3xl md:text-4xl font-bold text-[#1f3b2c] mt-6">Academic opportunities</h2>
+        <p class="text-[#5a6e64] mt-3">Designed for students aiming for competitive excellence.</p>
+      </div>
+
+      <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16">
+        <!-- benefit 1 -->
+        <div class="premium-card p-6 bg-white" data-aos="fade-up" data-aos-delay="0">
+          <div class="w-12 h-12 bg-[#d8b14c]/10 rounded-xl flex items-center justify-center border border-[#d8b14c]/30">
+            <i data-lucide="badge-percent" class="icon-md text-[#1f3b2c]"></i>
+          </div>
+          <h4 class="text-lg font-bold text-[#1f3b2c] mt-4">100% Scholarship</h4>
+          <p class="text-sm text-[#5a6e64] leading-relaxed mt-1">For IIT-JEE, NEET & Foundation programs.</p>
+        </div>
+        <!-- benefit 2 -->
+        <div class="premium-card p-6 bg-white" data-aos="fade-up" data-aos-delay="50">
+          <div class="w-12 h-12 bg-[#d8b14c]/10 rounded-xl flex items-center justify-center border border-[#d8b14c]/30">
+            <i data-lucide="book-open" class="icon-md text-[#1f3b2c]"></i>
+          </div>
+          <h4 class="text-lg font-bold text-[#1f3b2c] mt-4">IIT-JEE/NEET Foundation</h4>
+          <p class="text-sm text-[#5a6e64] leading-relaxed mt-1">Early competitive training & conceptual clarity.</p>
+        </div>
+        <!-- benefit 3 -->
+        <div class="premium-card p-6 bg-white" data-aos="fade-up" data-aos-delay="100">
+          <div class="w-12 h-12 bg-[#d8b14c]/10 rounded-xl flex items-center justify-center border border-[#d8b14c]/30">
+            <i data-lucide="star" class="icon-md text-[#1f3b2c]"></i>
+          </div>
+          <h4 class="text-lg font-bold text-[#1f3b2c] mt-4">Star Olympiad Batch</h4>
+          <p class="text-sm text-[#5a6e64] leading-relaxed mt-1">Advanced cohort with personalised mentoring.</p>
+        </div>
+        <!-- benefit 4 -->
+        <div class="premium-card p-6 bg-white" data-aos="fade-up" data-aos-delay="150">
+          <div class="w-12 h-12 bg-[#d8b14c]/10 rounded-xl flex items-center justify-center border border-[#d8b14c]/30">
+            <i data-lucide="medal" class="icon-md text-[#1f3b2c]"></i>
+          </div>
+          <h4 class="text-lg font-bold text-[#1f3b2c] mt-4">Cash Prizes</h4>
+          <p class="text-sm text-[#5a6e64] leading-relaxed mt-1">1st: ₹5,000 · 2nd: ₹2,500</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHOLARSHIP + PRIZE HIGHLIGHT (minimal, clean) -->
+    <div class="grid lg:grid-cols-5 gap-8 mt-24">
+      <div class="lg:col-span-2" data-aos="fade-right">
+        <div class="chip border-[#d8b14c]/30 inline-flex items-center gap-2 mb-4">
+          <i data-lucide="trophy" class="icon-sm text-[#d8b14c]"></i>
+          <span>SCHOLARSHIP BENEFITS</span>
+        </div>
+        <h3 class="text-3xl font-bold text-[#1f3b2c] leading-tight">Up to 100% scholarship & cash awards</h3>
+        <div class="mt-6 space-y-3 text-[#4a5c52]">
+          <div class="flex items-center gap-3"><i data-lucide="check-circle" class="icon-sm text-[#d8b14c]"></i> 100% Scholarship for IIT-JEE/NEET</div>
+          <div class="flex items-center gap-3"><i data-lucide="check-circle" class="icon-sm text-[#d8b14c]"></i> 1st Prize: ₹5,000 · 2nd Prize: ₹2,500</div>
+          <div class="flex items-center gap-3"><i data-lucide="check-circle" class="icon-sm text-[#d8b14c]"></i> Exam: 1st March 2026 · 9:00–11:30 AM</div>
+        </div>
+      </div>
+      <div class="lg:col-span-3 grid sm:grid-cols-2 gap-5" data-aos="fade-up">
+        <div class="bg-white border-l-4 border-[#d8b14c] rounded-xl p-6 shadow-sm">
+          <span class="text-3xl font-bold text-[#1f3b2c]">₹5,000</span>
+          <p class="font-medium text-[#1f3b2c] mt-1">1st Prize</p>
+        </div>
+        <div class="bg-white border-l-4 border-[#1f3b2c] rounded-xl p-6 shadow-sm">
+          <span class="text-3xl font-bold text-[#1f3b2c]">₹2,500</span>
+          <p class="font-medium text-[#1f3b2c] mt-1">2nd Prize</p>
+        </div>
+        <div class="sm:col-span-2 bg-[#f8f6f0] border border-[#d8b14c]/40 rounded-xl p-6 flex flex-wrap justify-between items-center">
+          <span class="font-semibold text-[#1f3b2c]"><span class="text-[#d8b14c] font-bold">✦</span> Registration: ₹100 — Limited seats</span>
+          <span class="bg-[#1f3b2c] text-white px-5 py-2 rounded-full text-sm font-bold">Secure seat</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECTION 4 · EXAM DETAILS & CONTACT (clean, no emoji) -->
+    <section id="exam" class="anchor-offset scroll-mt-28 mt-28 grid lg:grid-cols-2 gap-10">
+      <!-- Who should apply -->
+      <div class="premium-card p-8 bg-white" data-aos="fade-up">
+        <div class="flex items-center gap-3 mb-5">
+          <div class="w-10 h-10 bg-[#d8b14c]/10 rounded-lg flex items-center justify-center">
+            <i data-lucide="user-check" class="icon-md text-[#1f3b2c]"></i>
+          </div>
+          <h3 class="text-xl font-bold text-[#1f3b2c]">Who should apply</h3>
+        </div>
+        <ul class="space-y-3 text-[#4a5c52]">
+          <li class="flex gap-2"><i data-lucide="chevron-right" class="icon-sm text-[#d8b14c] flex-shrink-0 mt-0.5"></i> Aspire for IIT-JEE, NEET & Olympiads</li>
+          <li class="flex gap-2"><i data-lucide="chevron-right" class="icon-sm text-[#d8b14c] flex-shrink-0 mt-0.5"></i> Strong interest in Mathematics & Science</li>
+          <li class="flex gap-2"><i data-lucide="chevron-right" class="icon-sm text-[#d8b14c] flex-shrink-0 mt-0.5"></i> Early preparation for competitive exams</li>
+          <li class="flex gap-2"><i data-lucide="chevron-right" class="icon-sm text-[#d8b14c] flex-shrink-0 mt-0.5"></i> Motivated for advanced academic program</li>
+        </ul>
+        <div class="mt-8 bg-[#f8f6f0] p-5 rounded-xl border border-[#d8b14c]/20">
+          <span class="font-bold text-[#1f3b2c] flex items-center gap-2"><i data-lucide="clock" class="icon-sm text-[#d8b14c]"></i> Limited seats – register now</span>
+          <p class="text-sm text-[#5a6e64] mt-1">Secure your place in IDPS Star Batch.</p>
+        </div>
+      </div>
+      <!-- Exam details + Contact combined elegant -->
+      <div class="space-y-6">
+        <div class="bg-[#1f3b2c] text-white p-8 rounded-2xl" data-aos="fade-left">
+          <div class="flex items-center gap-3 mb-4">
+            <i data-lucide="clipboard-list" class="icon-md text-[#d8b14c]"></i>
+            <h3 class="text-xl font-bold">Exam details</h3>
+          </div>
+          <div class="grid grid-cols-2 gap-5 text-sm">
+            <div><span class="text-[#d8b14c] font-medium">Date</span><p class="text-white font-semibold text-base mt-1">1st March 2026</p></div>
+            <div><span class="text-[#d8b14c] font-medium">Time</span><p class="text-white font-semibold text-base mt-1">9:00 – 11:30 AM</p></div>
+            <div><span class="text-[#d8b14c] font-medium">Eligibility</span><p class="text-white mt-1">Grade V to IX (NCERT)</p></div>
+            <div><span class="text-[#d8b14c] font-medium">Fee</span><p class="text-white font-bold mt-1">₹100</p></div>
+          </div>
+        </div>
+        <!-- CONTACT section (anchor) -->
+        <div id="contact" class="anchor-offset scroll-mt-28 bg-white border border-[#d8b14c]/40 p-6 rounded-2xl flex flex-wrap justify-between items-center gap-4" data-aos="fade-up">
+          <div>
+            <span class="text-xs uppercase tracking-wider text-[#6a7c72] flex items-center gap-1"><i data-lucide="phone" class="icon-sm text-[#d8b14c]"></i> Contact IDPS Ballari</span>
+            <div class="flex flex-wrap gap-4 mt-2 text-[#1f3b2c] font-semibold">
+              <span>73492 54789</span>
+              <span>81972 83233</span>
+              <span>81971 83233</span>
+            </div>
+          </div>
+          <a href="#" class="bg-[#1f3b2c] text-white px-6 py-3 rounded-xl text-sm font-medium flex items-center gap-2 hover:bg-[#2a4a37] transition">
+            <i data-lucide="globe" class="icon-sm"></i> www.idpsballari.in
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA · clean, no emoji, lucid icons -->
+    <div class="mt-28 text-center" data-aos="fade-up" data-aos-duration="600">
+      <div class="bg-[#f8f6f0] border border-[#d8b14c]/30 rounded-3xl px-10 py-14 max-w-4xl mx-auto">
+        <i data-lucide="star" class="w-12 h-12 text-[#d8b14c] mx-auto stroke-1"></i>
+        <h4 class="text-3xl md:text-4xl font-bold text-[#1f3b2c] mt-4">IDPS Star Batch 2026</h4>
+        <p class="text-[#5a6e64] text-lg max-w-xl mx-auto mt-2">Scholarship Test · 1st March · ₹100 registration</p>
+        <div class="flex flex-wrap gap-4 justify-center mt-8">
+          <button class="bg-[#d8b14c] text-[#1f3b2c] px-10 py-4 rounded-xl font-bold flex items-center gap-2 hover:bg-[#c9a43b] transition shadow-sm">
+            <i data-lucide="edit-3" class="icon-sm"></i> Claim scholarship
+          </button>
+          <button class="border border-[#1f3b2c] text-[#1f3b2c] px-10 py-4 rounded-xl font-medium flex items-center gap-2 hover:bg-[#1f3b2c]/5 transition">
+            <i data-lucide="book" class="icon-sm"></i> Syllabus
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- FOOTER – clean -->
+    <footer class="mt-20 pb-8 border-t border-[#efede8] pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-[#6a7c72]">
+      <span class="font-medium text-[#1f3b2c]">© International Delhi Public School · Society, Ballari</span>
+      <span class="flex gap-6 mt-3 md:mt-0">
+        <span class="flex items-center gap-1"><i data-lucide="phone" class="icon-sm text-[#d8b14c]"></i> 73492 54789</span>
+        <span class="flex items-center gap-1"><i data-lucide="globe" class="icon-sm text-[#d8b14c]"></i> idpsballari.in</span>
+      </span>
+    </footer>
+  </main>
+
+  <!-- Lucide icons init -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      lucide.createIcons();
+    });
+  </script>
+  <!-- AOS init – very subtle -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 500,
+      once: true,
+      offset: 20,
+      disable: 'mobile'
+    });
+  </script>
+  <!-- smooth anchor -->
+  <script>
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if(target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          history.pushState(null, null, this.getAttribute('href'));
+        }
+      });
+    });
+  </script>
+</body>
+</html>
