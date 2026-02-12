@@ -8,11 +8,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Google Fonts: Poppins + Playfair Display (inspired) -->
+    <!-- Google Fonts: Poppins + Playfair Display -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
     <!-- Animate.css -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- Lucide (for consistent icons) -->
+    <!-- Lucide for consistent icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
     
     <script>
@@ -20,22 +20,17 @@
             theme: {
                 extend: {
                     colors: {
-                        // Premium forest green palette – inspired by the blue elegance but adapted to green
-                        primary: '#0f5c3f',      // deep, rich green – authoritative and calm
-                        secondary: '#2a7a5c',    // mid-tone green – fresh and vibrant
-                        accent: '#d4a11e',       // warm gold – subtle contrast, premium feel
+                        // Green used sparingly - for headings and accents only
+                        primary: '#0f5c3f',      // deep green - only for headings and key accents
+                        secondary: '#2a7a5c',    // mid green - secondary headings
+                        accent: '#d4a11e',       // warm gold - subtle contrast
                         light: '#f3f9f5',        // soft mint white
-                        dark: '#0a3b2a',         // deepest green for footer
-                        'gray-light': '#e2efe8',
+                        dark: '#0a3b2a',         // deep green (minimal use)
                     },
                     fontFamily: {
                         'poppins': ['Poppins', 'sans-serif'],
                         'playfair': ['Playfair Display', 'serif'],
                     },
-                    animation: {
-                        'fade-in': 'fadeIn 0.8s ease-out',
-                        'pulse-slow': 'pulse 3s ease-in-out infinite',
-                    }
                 }
             }
         }
@@ -43,25 +38,26 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: #fafffd;
-            color: #1f3a2e;
+            background-color: #fcfcfc;
+            color: #2d3a35;
         }
         h1, h2, h3, .font-serif {
             font-family: 'Playfair Display', serif;
+            color: #0f5c3f; /* green only for headings */
         }
         .hero-gradient {
-            background: linear-gradient(145deg, rgba(15, 92, 63, 0.95) 0%, rgba(42, 122, 92, 0.9) 100%);
+            background: linear-gradient(145deg, rgba(15, 92, 63, 0.04) 0%, rgba(42, 122, 92, 0.02) 100%);
         }
         .card-hover {
             transition: all 0.3s cubic-bezier(0.2, 0, 0, 1);
         }
         .card-hover:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 30px -10px rgba(15, 92, 63, 0.12);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 30px -10px rgba(15, 92, 63, 0.06);
         }
         .section-divider {
             height: 1.5px;
-            background: linear-gradient(to right, transparent, rgba(15, 92, 63, 0.3), transparent);
+            background: linear-gradient(to right, transparent, rgba(15, 92, 63, 0.2), transparent);
         }
         .anchor-offset {
             scroll-margin-top: 100px;
@@ -69,8 +65,11 @@
         .nav-link {
             position: relative;
             font-weight: 500;
-            color: #1f3a2e;
+            color: #3a4a44;
             transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: #0f5c3f;
         }
         .nav-link:after {
             content: '';
@@ -85,6 +84,7 @@
         .nav-link:hover:after {
             width: 100%;
         }
+        /* Images from images folder */
         .img-logo {
             max-height: 52px;
             width: auto;
@@ -93,124 +93,154 @@
             width: 100%;
             height: auto;
             border-radius: 24px;
-            box-shadow: 0 20px 30px -10px rgba(15, 92, 63, 0.15);
+            box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.05);
         }
-        /* Inspired by the footer gradient and glassmorphism from reference */
-        .footer-gradient {
-            background: linear-gradient(145deg, #0a3b2a 0%, #0f5c3f 100%);
+        /* Black footer - exactly as requested */
+        .footer-black {
+            background-color: #0a0c0e;
+            color: #e5e7eb;
         }
-        .social-icon {
-            transition: all 0.25s ease;
+        .social-icon-black {
             display: flex;
             align-items: center;
             justify-content: center;
             width: 44px;
             height: 44px;
             border-radius: 50%;
-            background: rgba(255,255,255,0.08);
-            border: 1px solid rgba(212,161,30,0.2);
-            color: #d4a11e;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.08);
+            color: #d1d5db;
+            transition: all 0.25s;
         }
-        .social-icon:hover {
+        .social-icon-black:hover {
             background: #d4a11e;
-            color: #0a3b2a;
+            color: black;
             border-color: #d4a11e;
             transform: translateY(-3px);
         }
-        .footer-link {
-            transition: color 0.2s;
-        }
-        .footer-link:hover {
+        .footer-link-black:hover {
             color: #d4a11e;
         }
         @media (max-width: 640px) {
             .img-logo { max-height: 44px; }
         }
+        /* Center alignment for hero */
+        .hero-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        /* Fill form as anchor link (like About) */
+        .anchor-form {
+            font-weight: 500;
+            color: #3a4a44;
+            transition: 0.2s;
+            position: relative;
+        }
+        .anchor-form:hover {
+            color: #0f5c3f;
+        }
+        .anchor-form:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #0f5c3f;
+            transition: width 0.25s;
+        }
+        .anchor-form:hover:after {
+            width: 100%;
+        }
     </style>
 </head>
 <body class="antialiased">
 
-    <!-- ===== HEADER (inspired by clean navigation) ===== -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-[#d4e1da] shadow-sm">
-        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
-            <!-- Logo + School name (green palette) -->
+    <!-- ===== HEADER with Made with ❤️ Revisewell ===== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center">
+            <!-- Logo + School name (images in images folder) -->
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden shadow-md">
-                    <img src="logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='IDPS';">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden bg-gray-100">
+                    <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-primary>IDPS</span>';">
                 </div>
                 <div>
                     <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-primary">International Delhi Public School</h1>
-                    <p class="text-xs text-gray-600">CBSE · K12 · Day cum Boarding</p>
+                    <p class="text-xs text-gray-500">CBSE · K12 · Day cum Boarding</p>
                 </div>
             </div>
             
-            <!-- Desktop Navigation + Fill Form (inspired by reference CTA placement) -->
+            <!-- Desktop Navigation - Fill form now as anchor link (no button style) -->
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="nav-link text-sm lg:text-base">About</a>
                 <a href="#scholarship" class="nav-link text-sm lg:text-base">Scholarship</a>
                 <a href="#benefits" class="nav-link text-sm lg:text-base">Benefits</a>
                 <a href="#exam" class="nav-link text-sm lg:text-base">Exam</a>
                 <a href="#contact" class="nav-link text-sm lg:text-base">Contact</a>
-                <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold flex items-center gap-2 hover:bg-secondary transition shadow-md">
-                    <i data-lucide="form-input" class="w-4 h-4"></i> Fill form
-                </a>
+                <a href="https://forms.google.com/your-form-id" target="_blank" class="anchor-form text-sm lg:text-base">Fill form</a>
+                <!-- Made with ❤️ Revisewell in header -->
+                <span class="text-xs text-gray-400 border-l pl-6 ml-2 border-gray-300">
+                    Made with <i class="fas fa-heart text-accent text-xs"></i> Revisewell
+                </span>
             </nav>
             
-            <!-- Mobile: fill form icon + menu -->
+            <!-- Mobile: menu + revisewell icon -->
             <div class="flex items-center gap-3 md:hidden">
-                <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white p-2.5 rounded-full shadow-md">
-                    <i data-lucide="form-input" class="w-5 h-5"></i>
-                </a>
-                <button id="mobile-menu-btn" class="p-2 rounded-lg border border-primary/30 text-primary">
+                <span class="text-xs text-gray-400">
+                    <i class="fas fa-heart text-accent"></i>
+                </span>
+                <button id="mobile-menu-btn" class="p-2 rounded-lg border border-gray-300 text-gray-700">
                     <i data-lucide="menu" class="w-5 h-5"></i>
                 </button>
             </div>
         </div>
         
         <!-- Mobile menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-[#d4e1da] px-5 py-4 flex flex-col space-y-3 text-sm font-medium">
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200 px-5 py-4 flex flex-col space-y-3 text-sm font-medium">
             <a href="#about" class="py-2 hover:text-primary">About</a>
             <a href="#scholarship" class="py-2 hover:text-primary">Scholarship</a>
             <a href="#benefits" class="py-2 hover:text-primary">Benefits</a>
             <a href="#exam" class="py-2 hover:text-primary">Exam</a>
             <a href="#contact" class="py-2 hover:text-primary">Contact</a>
-            <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-4 py-3 rounded-full text-center font-semibold flex items-center justify-center gap-2">
-                <i data-lucide="form-input" class="w-4 h-4"></i> Fill form
-            </a>
+            <a href="https://forms.google.com/your-form-id" target="_blank" class="py-2 text-primary font-semibold">Fill form →</a>
+            <span class="text-xs text-gray-400 pt-2 border-t">Made with <i class="fas fa-heart text-accent"></i> Revisewell</span>
         </div>
     </header>
 
-    <!-- ===== HERO SECTION (green gradient inspired by reference) ===== -->
-    <section class="relative overflow-hidden hero-gradient text-white">
-        <div class="container mx-auto px-4 py-16 md:py-24">
-            <div class="max-w-3xl" data-aos="fade-right">
-                <h2 class="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-6 animate__animated animate__fadeInUp">
-                    IDPS Star Batch <br><span class="text-[#d4a11e]">Scholarship 2026</span>
+    <!-- ===== HERO SECTION - CENTERED ALIGNMENT ===== -->
+    <section class="hero-gradient py-20 md:py-28">
+        <div class="container mx-auto px-4">
+            <div class="hero-center max-w-4xl mx-auto">
+                <!-- IDPS Star Batch / Scholarship 2026 - centered -->
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold text-primary mb-4 animate__animated animate__fadeInUp">
+                    IDPS Star Batch
                 </h2>
-                <p class="text-xl mb-8 opacity-95 animate__animated animate__fadeInUp animate__delay-1s max-w-2xl">
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-semibold text-secondary mb-6 animate__animated animate__fadeInUp animate__delay-1s">
+                    Scholarship 2026
+                </h3>
+                <p class="text-gray-700 text-lg md:text-xl max-w-2xl mx-auto mb-8 animate__animated animate__fadeInUp animate__delay-1s">
                     For students of Grade V to IX (NCERT). Up to 100% scholarship for IIT-JEE, NEET & Olympiad foundation.
                 </p>
-                <div class="animate__animated animate__fadeInUp animate__delay-2s flex flex-wrap gap-4">
-                    <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-accent text-white px-8 py-4 rounded-full font-bold hover:bg-[#b58b1a] transition shadow-lg flex items-center gap-2">
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 animate__animated animate__fadeInUp animate__delay-2s">
+                    <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-10 py-4 rounded-full font-semibold hover:bg-secondary transition shadow-md flex items-center gap-2">
                         <i data-lucide="form-input" class="w-5 h-5"></i> Fill registration form
                     </a>
-                    <span class="bg-white/20 backdrop-blur-sm px-6 py-4 rounded-full font-medium border border-white/30">
-                        <i data-lucide="calendar" class="inline w-4 h-4 mr-1"></i> 1st March 2026
+                    <span class="bg-gray-100 px-8 py-4 rounded-full font-medium text-gray-700 border border-gray-200 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5 text-primary"></i> 1st March 2026
                     </span>
                 </div>
             </div>
         </div>
-        <!-- Decorative elements (subtle, inspired) -->
-        <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full -translate-y-32 translate-x-32"></div>
-        <div class="absolute bottom-0 left-0 w-96 h-96 bg-white opacity-5 rounded-full translate-y-64 -translate-x-64"></div>
     </section>
 
-    <!-- ===== SECTION 1 · ABOUT SCHOOL (refined, no taglines) ===== -->
-    <section id="about" class="anchor-offset py-20 bg-[#fafffd]">
+    <!-- ===== SECTION 1 · ABOUT SCHOOL (images from images folder) ===== -->
+    <section id="about" class="anchor-offset py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-12 items-center">
                 <div data-aos="fade-right">
-                    <div class="inline-flex items-center gap-2 bg-primary/10 px-4 py-2 rounded-full text-primary text-sm font-semibold mb-5">
+                    <div class="inline-flex items-center gap-2 bg-primary/5 px-4 py-2 rounded-full text-primary text-sm font-medium border border-primary/10 mb-5">
                         <i data-lucide="shield" class="w-4 h-4"></i> Since 2002 · Ballari
                     </div>
                     <h2 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-primary leading-tight">
@@ -218,18 +248,18 @@
                     </h2>
                     <div class="w-20 h-1 bg-accent my-6"></div>
                     <p class="text-gray-700 text-base sm:text-lg leading-relaxed">
-                        IDPS is a CBSE day-cum-boarding K12 school established by the region’s pioneers in education, known as frontrunners in technical education. Conceived to lead change in school education, the school introduces a culture of holistic development — blending intensive academic training with extensive exposure. With an uncompromising stance on overall growth during schooling years, IDPS ensures every student is prepared for both competitive excellence and life.
+                        IDPS is a CBSE day-cum-boarding K12 school established by the region's pioneers in education, known as frontrunners in technical education. Conceived to lead change in school education, the school introduces a culture of holistic development — blending intensive academic training with extensive exposure. With an uncompromising stance on overall growth during schooling years, IDPS ensures every student is prepared for both competitive excellence and life.
                     </p>
                     <div class="flex flex-wrap gap-6 mt-8">
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium">CBSE Affiliation</span></div>
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium">Day cum Boarding</span></div>
-                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium">K12 Curriculum</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium text-gray-800">CBSE Affiliation</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium text-gray-800">Day cum Boarding</span></div>
+                        <div class="flex items-center gap-2"><i data-lucide="check-circle" class="text-accent w-5 h-5"></i> <span class="font-medium text-gray-800">K12 Curriculum</span></div>
                     </div>
                 </div>
                 <div class="flex justify-center lg:justify-end" data-aos="fade-left">
                     <div class="relative">
-                        <img src="idps.jpeg" alt="IDPS Campus" class="img-campus rounded-3xl shadow-2xl border-8 border-white" onerror="this.src='https://placehold.co/600x400/e2efe8/0f5c3f?text=IDPS+Ballari';">
-                        <div class="absolute -bottom-5 -left-5 bg-white px-6 py-3 rounded-full shadow-lg border border-primary/20">
+                        <img src="images/idps.jpeg" alt="IDPS Campus" class="img-campus rounded-3xl shadow-xl border-8 border-white" onerror="this.src='https://placehold.co/600x400/e2efe8/0f5c3f?text=IDPS+Ballari';">
+                        <div class="absolute -bottom-5 -left-5 bg-white px-6 py-3 rounded-full shadow-lg border border-gray-200">
                             <span class="font-bold text-primary"><i data-lucide="map-pin" class="inline w-4 h-4 text-accent"></i> CLR Smart City, Ballari</span>
                         </div>
                     </div>
@@ -238,10 +268,10 @@
         </div>
     </section>
 
-    <!-- ===== SCHOLARSHIP SECTION (clean, no taglines) ===== -->
-    <section id="scholarship" class="anchor-offset py-20 bg-white">
+    <!-- ===== SCHOLARSHIP SECTION (clean, minimal green accents) ===== -->
+    <section id="scholarship" class="anchor-offset py-20 bg-gray-50">
         <div class="container mx-auto px-4">
-            <div class="bg-gradient-to-r from-primary to-secondary p-1 rounded-3xl shadow-xl">
+            <div class="bg-white p-1 rounded-3xl shadow-md border border-gray-200">
                 <div class="bg-white rounded-3xl p-8 md:p-10">
                     <div class="flex flex-col lg:flex-row justify-between items-start lg:items-center gap-8">
                         <div>
@@ -249,11 +279,11 @@
                             <p class="text-gray-600 text-lg mt-2 max-w-xl">Scholarship Test for students of Grade V to IX (NCERT).</p>
                         </div>
                         <div class="flex flex-col sm:flex-row items-center gap-4">
-                            <div class="bg-primary/5 px-6 py-4 rounded-xl border border-primary/20 text-center">
+                            <div class="bg-gray-50 px-6 py-4 rounded-xl border border-gray-200 text-center">
                                 <span class="text-2xl font-bold text-primary">₹100</span>
                                 <span class="block text-xs text-gray-600 mt-0.5">Registration fee</span>
                             </div>
-                            <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-accent text-white px-8 py-4 rounded-xl font-bold hover:bg-[#b58b1a] transition flex items-center gap-2 shadow-md w-full sm:w-auto justify-center">
+                            <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-8 py-4 rounded-xl font-semibold hover:bg-secondary transition flex items-center gap-2 shadow-sm w-full sm:w-auto justify-center">
                                 <i data-lucide="form-input" class="w-5 h-5"></i> Fill form
                             </a>
                         </div>
@@ -268,37 +298,37 @@
         </div>
     </section>
 
-    <!-- ===== BENEFITS (cards, inspired by reference card-hover) ===== -->
-    <section id="benefits" class="anchor-offset py-20 bg-[#f3f9f5]">
+    <!-- ===== BENEFITS (green only in headings) ===== -->
+    <section id="benefits" class="anchor-offset py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-12">
                 <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">Program benefits</h2>
                 <div class="section-divider w-24 mx-auto"></div>
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="bg-white p-8 rounded-2xl shadow-md card-hover border border-transparent hover:border-primary/30">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="badge-percent" class="w-7 h-7 text-primary"></i>
                     </div>
                     <h4 class="text-xl font-bold text-primary mb-2">100% Scholarship</h4>
                     <p class="text-gray-600 text-sm">For IIT-JEE, NEET & Foundation programs.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-md card-hover border border-transparent hover:border-primary/30">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="book-open" class="w-7 h-7 text-primary"></i>
                     </div>
                     <h4 class="text-xl font-bold text-primary mb-2">IIT-JEE/NEET Foundation</h4>
                     <p class="text-gray-600 text-sm">Early competitive training & conceptual clarity.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-md card-hover border border-transparent hover:border-primary/30">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="star" class="w-7 h-7 text-primary"></i>
                     </div>
                     <h4 class="text-xl font-bold text-primary mb-2">Star Olympiad Batch</h4>
                     <p class="text-gray-600 text-sm">Advanced cohort with personalised mentoring.</p>
                 </div>
-                <div class="bg-white p-8 rounded-2xl shadow-md card-hover border border-transparent hover:border-primary/30">
-                    <div class="w-14 h-14 bg-primary/10 rounded-xl flex items-center justify-center mb-5">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm card-hover border border-gray-100">
+                    <div class="w-14 h-14 bg-primary/5 rounded-xl flex items-center justify-center mb-5">
                         <i data-lucide="medal" class="w-7 h-7 text-primary"></i>
                     </div>
                     <h4 class="text-xl font-bold text-primary mb-2">Cash Prizes</h4>
@@ -309,10 +339,10 @@
     </section>
 
     <!-- ===== SCHOLARSHIP HIGHLIGHT + PRIZES ===== -->
-    <div class="py-16 bg-white">
+    <div class="py-16 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-5 gap-8 items-center">
-                <div class="lg:col-span-2" data-aos="fade-right">
+                <div class="lg:col-span-2">
                     <h3 class="text-2xl sm:text-3xl font-playfair font-bold text-primary">Scholarship & awards</h3>
                     <div class="mt-6 space-y-4 text-gray-700">
                         <div class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-accent mt-0.5"></i> <span>100% Scholarship for IIT-JEE/NEET</span></div>
@@ -321,17 +351,17 @@
                     </div>
                 </div>
                 <div class="lg:col-span-3 grid sm:grid-cols-2 gap-5">
-                    <div class="bg-white border-l-4 border-primary rounded-xl p-6 shadow-md">
+                    <div class="bg-white border-l-4 border-primary rounded-xl p-6 shadow-sm">
                         <span class="text-3xl font-bold text-primary">₹5,000</span>
                         <p class="font-medium text-gray-800 mt-1">1st Prize</p>
                     </div>
-                    <div class="bg-white border-l-4 border-accent rounded-xl p-6 shadow-md">
+                    <div class="bg-white border-l-4 border-accent rounded-xl p-6 shadow-sm">
                         <span class="text-3xl font-bold text-primary">₹2,500</span>
                         <p class="font-medium text-gray-800 mt-1">2nd Prize</p>
                     </div>
-                    <div class="sm:col-span-2 bg-primary/5 border border-primary/20 rounded-xl p-6 flex flex-wrap justify-between items-center gap-3">
-                        <span class="font-semibold text-primary"><span class="text-accent">✦</span> Registration: ₹100 — Limited seats</span>
-                        <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-bold hover:bg-secondary transition">
+                    <div class="sm:col-span-2 bg-white border border-gray-200 rounded-xl p-6 flex flex-wrap justify-between items-center gap-3">
+                        <span class="font-semibold text-gray-800"><span class="text-accent">✦</span> Registration: ₹100 — Limited seats</span>
+                        <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-secondary transition">
                             Fill form
                         </a>
                     </div>
@@ -341,13 +371,13 @@
     </div>
 
     <!-- ===== EXAM DETAILS + WHO SHOULD APPLY ===== -->
-    <section id="exam" class="anchor-offset py-20 bg-[#f3f9f5]">
+    <section id="exam" class="anchor-offset py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="grid lg:grid-cols-2 gap-8">
                 <!-- Who should apply -->
-                <div class="bg-white p-8 rounded-2xl shadow-lg card-hover">
+                <div class="bg-gray-50 p-8 rounded-2xl shadow-sm border border-gray-100">
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
+                        <div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center">
                             <i data-lucide="user-check" class="w-6 h-6 text-primary"></i>
                         </div>
                         <h3 class="text-2xl font-playfair font-bold text-primary">Who should apply</h3>
@@ -358,28 +388,26 @@
                         <li class="flex gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-accent flex-shrink-0"></i> Early starters for competitive exam preparation</li>
                         <li class="flex gap-3"><i data-lucide="chevron-right" class="w-5 h-5 text-accent flex-shrink-0"></i> Driven learners seeking advanced academic rigour</li>
                     </ul>
-                    <div class="mt-8 bg-primary/5 p-5 rounded-xl border border-primary/20">
+                    <div class="mt-8 bg-white p-5 rounded-xl border border-gray-200">
                         <span class="font-bold text-primary flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-accent"></i> Limited seats – early registration recommended</span>
                     </div>
                 </div>
                 <!-- Exam details card -->
-                <div class="bg-gradient-to-br from-primary to-secondary p-1 rounded-2xl shadow-xl">
-                    <div class="bg-white rounded-2xl p-8 h-full">
-                        <div class="flex items-center gap-3 mb-6">
-                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
-                                <i data-lucide="clipboard-list" class="w-6 h-6 text-primary"></i>
-                            </div>
-                            <h3 class="text-2xl font-playfair font-bold text-primary">Exam details</h3>
+                <div class="bg-white p-8 rounded-2xl shadow-sm border border-gray-200">
+                    <div class="flex items-center gap-3 mb-6">
+                        <div class="w-12 h-12 bg-primary/5 rounded-full flex items-center justify-center">
+                            <i data-lucide="clipboard-list" class="w-6 h-6 text-primary"></i>
                         </div>
-                        <div class="grid grid-cols-2 gap-6">
-                            <div><span class="text-sm font-semibold text-primary">Date</span><p class="text-xl font-bold text-gray-800 mt-1">1st March 2026</p></div>
-                            <div><span class="text-sm font-semibold text-primary">Time</span><p class="text-xl font-bold text-gray-800 mt-1">9:00 – 11:30 AM</p></div>
-                            <div><span class="text-sm font-semibold text-primary">Eligibility</span><p class="text-lg text-gray-800 mt-1">Grade V to IX (NCERT)</p></div>
-                            <div><span class="text-sm font-semibold text-primary">Fee</span><p class="text-2xl font-bold text-primary mt-1">₹100</p></div>
-                        </div>
-                        <div class="mt-8 pt-6 border-t border-gray-200">
-                            <p class="text-sm text-gray-600"><i data-lucide="info" class="w-4 h-4 inline text-accent"></i> Syllabus: Mathematics, Science, Logical Reasoning</p>
-                        </div>
+                        <h3 class="text-2xl font-playfair font-bold text-primary">Exam details</h3>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6">
+                        <div><span class="text-sm font-semibold text-primary">Date</span><p class="text-xl font-bold text-gray-800 mt-1">1st March 2026</p></div>
+                        <div><span class="text-sm font-semibold text-primary">Time</span><p class="text-xl font-bold text-gray-800 mt-1">9:00 – 11:30 AM</p></div>
+                        <div><span class="text-sm font-semibold text-primary">Eligibility</span><p class="text-lg text-gray-800 mt-1">Grade V to IX (NCERT)</p></div>
+                        <div><span class="text-sm font-semibold text-primary">Fee</span><p class="text-2xl font-bold text-primary mt-1">₹100</p></div>
+                    </div>
+                    <div class="mt-8 pt-6 border-t border-gray-200">
+                        <p class="text-sm text-gray-600"><i data-lucide="info" class="w-4 h-4 inline text-accent"></i> Syllabus: Mathematics, Science, Logical Reasoning</p>
                     </div>
                 </div>
             </div>
@@ -387,15 +415,15 @@
     </section>
 
     <!-- ===== FINAL CTA ===== -->
-    <div class="py-20 bg-white">
+    <div class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="max-w-4xl mx-auto text-center">
-                <div class="bg-[#f3f9f5] border border-primary/20 rounded-3xl p-12 shadow-lg">
+                <div class="bg-white border border-gray-200 rounded-3xl p-12 shadow-sm">
                     <i data-lucide="star" class="w-16 h-16 text-accent mx-auto stroke-1"></i>
                     <h4 class="text-3xl md:text-4xl font-playfair font-bold text-primary mt-4">IDPS Star Batch 2026</h4>
                     <p class="text-gray-700 text-lg max-w-2xl mx-auto mt-2">Scholarship Test · 1st March · ₹100 registration</p>
                     <div class="flex justify-center mt-8">
-                        <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-12 py-5 rounded-full font-bold text-lg flex items-center gap-3 hover:bg-secondary transition shadow-xl">
+                        <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-primary text-white px-12 py-5 rounded-full font-semibold text-lg flex items-center gap-3 hover:bg-secondary transition shadow-md">
                             <i data-lucide="form-input" class="w-5 h-5"></i> Fill form now
                         </a>
                     </div>
@@ -404,72 +432,72 @@
         </div>
     </div>
 
-    <!-- ===== FOOTER (completely redesigned, inspired by reference's footer) ===== -->
-    <footer id="contact" class="footer-gradient text-white pt-16 pb-8">
+    <!-- ===== BLACK FOOTER (exactly as requested) ===== -->
+    <footer id="contact" class="footer-black text-white pt-16 pb-8">
         <div class="container mx-auto px-4">
-            <!-- Main footer content - 3 column grid like reference but with green palette -->
+            <!-- 3 column grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                 <!-- School info column -->
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-14 h-14 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20">
-                            <img src="logo_idps.png" alt="IDPS" class="w-10 h-10 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-2xl>🏛️</span>';">
+                        <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
+                            <img src="images/logo_idps.png" alt="IDPS" class="w-10 h-10 object-contain" onerror="this.style.display='none'; this.parentElement.innerHTML='<span class=text-2xl>🏛️</span>';">
                         </div>
                         <div>
-                            <h5 class="text-xl font-playfair font-bold">International Delhi</h5>
-                            <p class="text-sm text-gray-300">Public School, Ballari</p>
+                            <h5 class="text-xl font-playfair font-bold text-white">International Delhi</h5>
+                            <p class="text-sm text-gray-400">Public School, Ballari</p>
                         </div>
                     </div>
-                    <p class="text-gray-300 text-sm leading-relaxed mb-4">
+                    <p class="text-gray-400 text-sm leading-relaxed mb-4">
                         Pioneering holistic education since 2002. A unit of International Delhi Public School Society.
                     </p>
                     <div class="flex space-x-3 mt-4">
-                        <a href="#" class="social-icon">
+                        <a href="#" class="social-icon-black">
                             <i class="fab fa-instagram"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="#" class="social-icon-black">
                             <i class="fab fa-youtube"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="#" class="social-icon-black">
                             <i class="fab fa-facebook-f"></i>
                         </a>
-                        <a href="#" class="social-icon">
+                        <a href="#" class="social-icon-black">
                             <i class="fab fa-twitter"></i>
                         </a>
                     </div>
                 </div>
                 
-                <!-- Address & Contact (no phone numbers) -->
+                <!-- Address & Website (no phone numbers) -->
                 <div>
-                    <h5 class="text-lg font-bold mb-6 flex items-center gap-2">
+                    <h5 class="text-lg font-bold mb-6 flex items-center gap-2 text-white">
                         <i class="fas fa-location-dot text-accent"></i> Campus address
                     </h5>
                     <div class="space-y-4">
-                        <p class="text-gray-300 text-sm leading-relaxed">
+                        <p class="text-gray-400 text-sm leading-relaxed">
                             IDPS Campus, CLR Smart City,<br>
                             Kappagal Road, Ballari,<br>
                             Karnataka - 583103
                         </p>
                         <div class="pt-2">
                             <h6 class="text-sm font-semibold text-accent mb-2">Website</h6>
-                            <a href="https://www.idpsballari.in" target="_blank" class="text-gray-300 hover:text-white flex items-center gap-2 transition footer-link">
+                            <a href="https://www.idpsballari.in" target="_blank" class="text-gray-400 hover:text-white flex items-center gap-2 transition footer-link-black">
                                 <i class="fas fa-globe"></i> www.idpsballari.in
                             </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Quick links & Form CTA -->
+                <!-- Quick links & Form -->
                 <div>
-                    <h5 class="text-lg font-bold mb-6 flex items-center gap-2">
+                    <h5 class="text-lg font-bold mb-6 flex items-center gap-2 text-white">
                         <i class="fas fa-pen-to-square text-accent"></i> Scholarship
                     </h5>
-                    <ul class="space-y-3 text-gray-300">
-                        <li><a href="#scholarship" class="hover:text-white transition footer-link flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Star Batch 2026</a></li>
-                        <li><a href="#exam" class="hover:text-white transition footer-link flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Exam details</a></li>
-                        <li><a href="#benefits" class="hover:text-white transition footer-link flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Benefits</a></li>
+                    <ul class="space-y-3 text-gray-400">
+                        <li><a href="#scholarship" class="hover:text-white transition footer-link-black flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Star Batch 2026</a></li>
+                        <li><a href="#exam" class="hover:text-white transition footer-link-black flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Exam details</a></li>
+                        <li><a href="#benefits" class="hover:text-white transition footer-link-black flex items-center gap-2"><i class="fas fa-chevron-right text-accent text-xs"></i> Benefits</a></li>
                         <li class="pt-4">
-                            <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-accent text-dark px-6 py-3 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#c6931a] transition shadow-lg w-full sm:w-auto">
+                            <a href="https://forms.google.com/your-form-id" target="_blank" class="bg-accent text-black px-6 py-3 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-[#c6931a] transition shadow-lg w-full sm:w-auto">
                                 <i data-lucide="form-input" class="w-4 h-4"></i> Fill registration form
                             </a>
                         </li>
@@ -477,10 +505,10 @@
                 </div>
             </div>
             
-            <!-- Copyright section (inspired by reference's footer bottom) -->
+            <!-- Copyright with Made with ❤️ Revisewell -->
             <div class="border-t border-white/10 mt-12 pt-8 text-center">
-                <p class="text-gray-400 text-sm">© 2026 International Delhi Public School. All Rights Reserved.</p>
-                <p class="text-gray-500 text-xs mt-2">Made with <i class="fas fa-heart text-accent"></i> for IDPS</p>
+                <p class="text-gray-500 text-sm">© 2026 International Delhi Public School. All Rights Reserved.</p>
+                <p class="text-gray-600 text-xs mt-2">Made with <i class="fas fa-heart text-accent"></i> Revisewell</p>
             </div>
         </div>
     </footer>
@@ -500,24 +528,7 @@
         });
     </script>
     
-    <!-- Simple AOS-like animation on scroll (manual) -->
-    <script>
-        // Intersection Observer for fade effects
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('animate__fadeIn');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        document.querySelectorAll('[data-aos]').forEach(el => {
-            el.classList.add('animate__animated', 'animate__fadeIn');
-            observer.observe(el);
-        });
-    </script>
-    
-    <!-- Smooth anchor scroll -->
+    <!-- Simple scroll observer -->
     <script>
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
