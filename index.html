@@ -187,6 +187,12 @@
             }
             h2 { font-size: 2.25rem; }
         }
+
+        /* ===== LOGO BACKGROUND REMOVED – transparent container ===== */
+        .logo-transparent {
+            background: transparent !important;
+            background-color: transparent !important;
+        }
     </style>
 </head>
 <body class="antialiased">
@@ -196,8 +202,8 @@
         <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center">
             <!-- logo area + school name -->
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
-                    <!-- logo_idps.png placed in images folder -->
+                <!-- Logo background color removed – fully transparent -->
+                <div class="w-12 h-12 rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden logo-transparent" style="background: transparent !important; background-color: transparent !important;">
                     <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
@@ -306,7 +312,7 @@
         </div>
     </section>
 
-    <!-- ===== SCHOLARSHIP SECTION – REDESIGNED, NO IMAGE ===== -->
+    <!-- ===== SCHOLARSHIP SECTION – REDESIGNED, NO IMAGE, ADJUSTED GRID TO FILL EMPTY SPACE ===== -->
     <section id="scholarship" class="py-16 md:py-20 bg-white">
         <div class="container mx-auto px-4">
             <div class="text-center mb-10 md:mb-12 animate-on-scroll" id="scholarship-title-animate">
@@ -323,7 +329,9 @@
                     <div class="bg-white p-6 md:p-8 lg:p-10 rounded-2xl">
                         <h3 class="text-2xl md:text-3xl font-playfair font-bold text-primary mb-6 text-center">Test Details</h3>
                         
+                        <!-- ADJUSTED GRID: single column on mobile, two columns on md+ with proper centering and no empty space -->
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                            <!-- Left column - Date & Time only -->
                             <div class="space-y-6">
                                 <div class="flex flex-col items-center md:items-start text-center md:text-left">
                                     <div class="flex items-center gap-2 mb-2">
@@ -332,12 +340,9 @@
                                     </div>
                                     <p class="text-gray-700">1st March 2026 | 9:00 AM - 11:30 AM</p>
                                 </div>
-                                
-                                <!-- SUBJECTS/SYLLABUS INFO REMOVED COMPLETELY -->
-                                <!-- <div class="flex flex-col items-center md:items-start text-center md:text-left"> ... removed -->
-                                
                             </div>
                             
+                            <!-- Right column - Eligibility and Scholarship -->
                             <div class="space-y-6">
                                 <div class="flex flex-col items-center md:items-start text-center md:text-left">
                                     <div class="flex items-center gap-2 mb-2">
@@ -478,7 +483,7 @@
                         <span class="font-bold text-primary flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-accent"></i> Limited seats – early registration recommended</span>
                     </div>
                 </div>
-                <!-- Exam details card – NO SYLLABUS/SUBJECTS INFO -->
+                <!-- Exam details card – NO SYLLABUS/SUBJECTS INFO, balanced layout -->
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/60 hover:border-accent transition-all duration-300 animate-on-scroll" id="exam2-animate">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -492,8 +497,7 @@
                         <div><span class="text-sm font-semibold text-primary">Eligibility</span><p class="text-lg text-gray-700 mt-1">Grade V to IX (NCERT)</p></div>
                         <div><span class="text-sm font-semibold text-primary">Fee</span><p class="text-2xl font-bold text-primary mt-1">₹100</p></div>
                     </div>
-                    <!-- SYLLABUS/SUBJECTS INFO COMPLETELY REMOVED FROM HERE -->
-                    <!-- <div class="mt-8 pt-6 border-t border-gray-200">... removed -->
+                    <!-- SYLLABUS/SUBJECTS INFO COMPLETELY REMOVED - no empty space -->
                 </div>
             </div>
         </div>
@@ -528,9 +532,9 @@
                 <!-- School info -->
                 <div>
                     <div class="flex items-center gap-3 mb-6">
-                        <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
-                            <!-- logo also appears in footer, use same path -->
-                            <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover rounded-full">
+                        <!-- Footer logo background also removed -->
+                        <div class="w-14 h-14 rounded-full flex items-center justify-center border border-white/10 overflow-hidden" style="background: transparent !important; background-color: transparent !important;">
+                            <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <h5 class="text-xl font-playfair font-bold text-white">International Delhi</h5>
