@@ -197,12 +197,13 @@
             <!-- logo area + school name -->
             <div class="flex items-center gap-3">
                 <div class="w-12 h-12 bg-primary rounded-full flex items-center justify-center text-white font-bold text-xl overflow-hidden">
-                    <!-- no image in logo placeholder? we keep school initial; no external image -->
-                    <span class="text-white text-xl font-playfair">IDPS</span>
+                    <!-- logo_idps.png placed in images folder -->
+                    <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
                     <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-primary">International Delhi Public School</h1>
-                    <p class="text-xs text-gray-600 font-medium">CBSE · K12 · Day cum Boarding</p>
+                    <!-- Changed subtitle to "A Unit of International Delhi Public School Society" -->
+                    <p class="text-xs text-gray-600 font-medium">A Unit of International Delhi Public School Society</p>
                 </div>
             </div>
             
@@ -241,6 +242,7 @@
         
         <div class="container mx-auto px-4 py-16 md:py-24 lg:py-28 relative z-10">
             <div class="max-w-3xl mx-auto md:mx-0 text-center md:text-left">
+                <!-- International Delhi Public School in a single line -->
                 <h2 class="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-6 animate__animated animate__fadeInUp">
                     International Delhi Public School Star Batch
                 </h2>
@@ -331,13 +333,9 @@
                                     <p class="text-gray-700">1st March 2026 | 9:00 AM - 11:30 AM</p>
                                 </div>
                                 
-                                <div class="flex flex-col items-center md:items-start text-center md:text-left">
-                                    <div class="flex items-center gap-2 mb-2">
-                                        <i data-lucide="book-open" class="w-5 h-5 text-accent"></i>
-                                        <h4 class="font-bold text-lg">Subjects Covered</h4>
-                                    </div>
-                                    <p class="text-gray-700">Mathematics, Science, Logical Reasoning</p>
-                                </div>
+                                <!-- SUBJECTS/SYLLABUS INFO REMOVED COMPLETELY -->
+                                <!-- <div class="flex flex-col items-center md:items-start text-center md:text-left"> ... removed -->
+                                
                             </div>
                             
                             <div class="space-y-6">
@@ -480,7 +478,7 @@
                         <span class="font-bold text-primary flex items-center gap-2"><i data-lucide="clock" class="w-5 h-5 text-accent"></i> Limited seats – early registration recommended</span>
                     </div>
                 </div>
-                <!-- Exam details card -->
+                <!-- Exam details card – NO SYLLABUS/SUBJECTS INFO -->
                 <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/60 hover:border-accent transition-all duration-300 animate-on-scroll" id="exam2-animate">
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center">
@@ -494,9 +492,8 @@
                         <div><span class="text-sm font-semibold text-primary">Eligibility</span><p class="text-lg text-gray-700 mt-1">Grade V to IX (NCERT)</p></div>
                         <div><span class="text-sm font-semibold text-primary">Fee</span><p class="text-2xl font-bold text-primary mt-1">₹100</p></div>
                     </div>
-                    <div class="mt-8 pt-6 border-t border-gray-200">
-                        <p class="text-sm text-gray-600"><i data-lucide="info" class="w-4 h-4 inline text-accent"></i> Syllabus: Mathematics, Science, Logical Reasoning</p>
-                    </div>
+                    <!-- SYLLABUS/SUBJECTS INFO COMPLETELY REMOVED FROM HERE -->
+                    <!-- <div class="mt-8 pt-6 border-t border-gray-200">... removed -->
                 </div>
             </div>
         </div>
@@ -532,7 +529,8 @@
                 <div>
                     <div class="flex items-center gap-3 mb-6">
                         <div class="w-14 h-14 bg-white/5 rounded-full flex items-center justify-center border border-white/10">
-                            <span class="text-2xl text-accent font-playfair font-bold">IDPS</span>
+                            <!-- logo also appears in footer, use same path -->
+                            <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-cover rounded-full">
                         </div>
                         <div>
                             <h5 class="text-xl font-playfair font-bold text-white">International Delhi</h5>
