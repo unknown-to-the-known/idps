@@ -48,26 +48,15 @@
             font-family: 'Playfair Display', serif;
         }
         
-        /* ===== HERO WITH BACKGROUND IMAGE ===== */
-        .hero-with-image {
+        /* ===== HERO GRADIENT – INSPIRED BY REFERENCE (GREEN VERSION) ===== */
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(10, 126, 74, 0.95) 0%, rgba(15, 92, 63, 0.9) 100%);
             position: relative;
             overflow: hidden;
-            background: transparent;
-        }
-        
-        .hero-bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: blur(4px);
-            z-index: 0;
         }
         
         /* decorative elements — exact copy of reference style */
-        .hero-with-image .decor-1 {
+        .hero-gradient .decor-1 {
             position: absolute;
             top: -20%;
             right: -10%;
@@ -76,10 +65,9 @@
             background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
             border-radius: 50%;
             animation: floatSlow 25s infinite ease-in-out;
-            z-index: 1;
         }
         
-        .hero-with-image .decor-2 {
+        .hero-gradient .decor-2 {
             position: absolute;
             bottom: -30%;
             left: -15%;
@@ -88,7 +76,6 @@
             background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
             border-radius: 50%;
             animation: floatSlow2 22s infinite ease-in-out;
-            z-index: 1;
         }
         
         @keyframes floatSlow {
@@ -194,7 +181,7 @@
         
         /* responsive adjustments */
         @media (max-width: 640px) {
-            .hero-with-image .container {
+            .hero-gradient .container {
                 padding-left: 1.5rem;
                 padding-right: 1.5rem;
             }
@@ -247,11 +234,8 @@
         <!-- Mobile menu dropdown - REMOVED -->
     </header>
 
-    <!-- ===== HERO SECTION – WITH SCHOOL IMAGE BACKGROUND ===== -->
-    <section class="hero-with-image text-white relative overflow-hidden">
-        <!-- School background image with blur -->
-        <img src="school.jpeg" alt="School Background" class="hero-bg-image">
-        
+    <!-- ===== HERO SECTION – INSPIRED BY REFERENCE ===== -->
+    <section class="hero-gradient text-white relative overflow-hidden">
         <!-- Decor elements (exact match reference style) -->
         <div class="decor-1"></div>
         <div class="decor-2"></div>
@@ -382,15 +366,11 @@
                             </div>
                         </div>
                         
-                        <!-- Registration Card inside - LAST DATE REMOVED, QR IMAGE ADDED -->
+                        <!-- Registration Card inside - LAST DATE REMOVED -->
                         <div class="mt-8 md:mt-10 text-center">
                             <div class="bg-primary/5 p-6 md:p-8 rounded-xl border-2 border-accent/60">
                                 <h4 class="text-xl md:text-2xl font-bold text-primary mb-3">Registration Fee: ₹100</h4>
                                 <p class="text-gray-700 mb-4">Limited seats available. Register now to secure your spot.</p>
-                                <!-- QR CODE IMAGE ADDED -->
-                                <div class="flex justify-center mt-4">
-                                    <img src="Qr1.jpg" alt="Pay ₹100 QR Code" class="w-48 h-48 object-contain">
-                                </div>
                                 <!-- LAST DATE COMPLETELY REMOVED - no span with clock icon -->
                             </div>
                         </div>
