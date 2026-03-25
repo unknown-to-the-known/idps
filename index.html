@@ -1,0 +1,1920 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>IDPS PU College | Pre‑University · green & gold</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 (for social icons only) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins + Playfair Display (as original) -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Original green & gold palette
+                        primary: '#0a7e4a',      // deep emerald (IDPS green)
+                        secondary: '#0f5c3f',    // forest
+                        accent: '#d4a11e',       // warm gold
+                        light: '#f0f9f3',
+                        dark: '#0a3b2a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s ease-in-out infinite',
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        h1, h2, h3, .font-serif, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Top contact bar - hidden on mobile, visible on desktop */
+        .top-bar {
+            background-color: #0a3b2a;
+            color: #e5e7eb;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        
+        .top-bar a {
+            color: #d4a11e;
+            transition: color 0.3s;
+        }
+        
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+        
+        /* Social icons in top bar */
+        .top-bar .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(212, 161, 30, 0.1);
+            color: #d4a11e;
+            transition: all 0.3s;
+            margin-left: 0.5rem;
+        }
+        
+        .top-bar .social-icon:hover {
+            background: #d4a11e;
+            color: #0a3b2a;
+            transform: translateY(-2px);
+        }
+        
+        /* Hide top bar on mobile */
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: white;
+            z-index: 9999;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #0a7e4a;
+        }
+        
+        .mobile-menu ul {
+            margin-top: 3rem;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 1.2rem;
+        }
+        
+        .mobile-menu a {
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .mobile-menu a:hover {
+            color: #0a7e4a;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #0a7e4a;
+            margin: 3px 0;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none !important;
+            }
+        }
+        
+        /* Hero section */
+        .hero-section {
+            position: relative;
+            overflow: hidden;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,126,74,0.85) 0%, rgba(15,92,63,0.9) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero-section .decor-1 {
+            position: absolute;
+            top: -20%;
+            right: -10%;
+            width: 60%;
+            height: 140%;
+            background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatSlow 25s infinite ease-in-out;
+            z-index: 1;
+        }
+        
+        .hero-section .decor-2 {
+            position: absolute;
+            bottom: -30%;
+            left: -15%;
+            width: 70%;
+            height: 150%;
+            background: radial-gradient(circle, rgba(255,255,255,0.06) 0%, transparent 70%);
+            border-radius: 50%;
+            animation: floatSlow2 22s infinite ease-in-out;
+            z-index: 1;
+        }
+        
+        /* 25 Years of Excellence Stamp - TOP RIGHT corner, bigger, text moved up - hidden on mobile */
+        .excellence-stamp {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            background: rgba(212, 161, 30, 0.95);
+            backdrop-filter: blur(4px);
+            border-radius: 50%;
+            width: 130px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            z-index: 3;
+            box-shadow: 0 10px 25px -5px rgba(0,0,0,0.3);
+            border: 3px solid rgba(255,215,0,0.6);
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        .excellence-stamp .years {
+            font-size: 2.8rem;
+            font-weight: 900;
+            line-height: 1;
+            color: #0a3b2a;
+            font-family: 'Playfair Display', serif;
+            margin-top: -10px;
+        }
+        
+        .excellence-stamp span {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0a3b2a;
+            display: block;
+        }
+        
+        @keyframes pulse-glow {
+            0%, 100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 161, 30, 0.7); }
+            50% { transform: scale(1.02); box-shadow: 0 0 0 8px rgba(212, 161, 30, 0.3); }
+        }
+        
+        /* Hide stamp on mobile */
+        @media (max-width: 768px) {
+            .excellence-stamp {
+                display: none;
+            }
+        }
+        
+        @keyframes floatSlow {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-5%, 5%) scale(1.02); }
+        }
+        
+        @keyframes floatSlow2 {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(5%, -5%) scale(1.02); }
+        }
+        
+        /* Card hover effect */
+        .card-hover {
+            transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+        }
+        .card-hover:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 25px 40px -15px rgba(10,126,74,0.2);
+        }
+        
+        /* Section divider */
+        .section-divider {
+            height: 2px;
+            width: 80px;
+            background: linear-gradient(to right, #d4a11e, #0a7e4a);
+            margin: 1.5rem auto;
+        }
+        
+        /* Subject cards */
+        .subject-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 1rem;
+            text-align: center;
+            border: 1px solid rgba(212,161,30,0.2);
+            transition: all 0.3s;
+        }
+        .subject-card:hover {
+            border-color: #d4a11e;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(10,126,74,0.2);
+        }
+        
+        .subject-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(212,161,30,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        /* Course detail cards */
+        .course-detail-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 30px -10px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            height: 100%;
+            border: 1px solid rgba(212,161,30,0.2);
+        }
+        .course-detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(10,126,74,0.3);
+            border-color: #d4a11e;
+        }
+        
+        .course-detail-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .course-detail-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .course-detail-card:hover .course-detail-image img {
+            transform: scale(1.05);
+        }
+        
+        .course-detail-content {
+            padding: 1.5rem;
+        }
+        
+        /* FAQ cards */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .faq-card {
+            background: #f9f7f3;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 2px solid rgba(212,161,30,0.2);
+            transition: all 0.3s;
+            height: 100%;
+        }
+        
+        .faq-card:hover {
+            border-color: #d4a11e;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px -10px rgba(10,126,74,0.15);
+        }
+        
+        .faq-card h4 {
+            color: #0a7e4a;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+        }
+        
+        .faq-card p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        
+        /* ===== INFINITE CAROUSEL ===== */
+        .carousel-container {
+            width: 100%;
+            overflow: hidden;
+            padding: 2rem 0;
+            position: relative;
+        }
+        
+        .carousel-track {
+            display: flex;
+            gap: 2rem;
+            width: max-content;
+            animation: carouselScroll 40s linear infinite;
+            will-change: transform;
+        }
+        
+        .carousel-track:hover {
+            animation-play-state: paused;
+        }
+        
+        @keyframes carouselScroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-320px * 10 - 2rem * 10)); }
+        }
+        
+        /* Album category cards */
+        .album-card {
+            width: 320px;
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -10px rgba(10,126,74,0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            flex-shrink: 0;
+        }
+        .album-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            border-color: #d4a11e;
+            box-shadow: 0 25px 40px -12px rgba(10,126,74,0.3);
+        }
+        
+        .album-card-image {
+            height: 240px;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .album-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .album-card:hover .album-card-image img {
+            transform: scale(1.05);
+        }
+        
+        .album-card-content {
+            padding: 1.5rem;
+            text-align: center;
+            background: white;
+        }
+        
+        .album-card-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #0a7e4a;
+        }
+        
+        .album-card-content p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* Navigation link */
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: #2d3a35;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: #0a7e4a;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a11e;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        /* Logo styling */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .logo-transparent {
+            background: transparent !important;
+        }
+
+        /* Map container */
+        .map-container {
+            width: 100%;
+            height: 170px;
+            border-radius: 1rem;
+            overflow: hidden;
+            border: 2px solid #d4a11e;
+            margin-top: 1rem;
+        }
+
+        /* Premium Lightbox */
+        .lightbox {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 59, 42, 0.98);
+            backdrop-filter: blur(10px);
+            z-index: 9999;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        .lightbox.active {
+            display: flex;
+            opacity: 1;
+        }
+        
+        .lightbox-content {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .lightbox-main {
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 80vh;
+            margin-bottom: 2rem;
+        }
+        
+        .lightbox-main img {
+            max-width: 95%;
+            max-height: 95%;
+            object-fit: contain;
+            border-radius: 1.5rem;
+            box-shadow: 0 30px 60px -15px rgba(0, 0, 0, 0.5);
+            border: 3px solid rgba(212, 161, 30, 0.3);
+            animation: lightboxFadeIn 0.4s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        
+        @keyframes lightboxFadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        .lightbox-close {
+            position: absolute;
+            top: 2rem;
+            right: 2rem;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            background: rgba(212, 161, 30, 0.2);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(212, 161, 30, 0.5);
+            color: white;
+            font-size: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10001;
+        }
+        
+        .lightbox-close:hover {
+            background: #d4a11e;
+            border-color: #d4a11e;
+            transform: rotate(90deg);
+            color: #0a3b2a;
+        }
+        
+        .lightbox-thumbnails-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 1rem auto;
+            padding: 0 2rem;
+        }
+        
+        .lightbox-thumbnails {
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            padding: 1rem 0.5rem;
+            scroll-behavior: smooth;
+            scrollbar-width: thin;
+            scrollbar-color: #d4a11e rgba(212, 161, 30, 0.1);
+        }
+        
+        .lightbox-thumbnails::-webkit-scrollbar {
+            height: 6px;
+        }
+        
+        .lightbox-thumbnails::-webkit-scrollbar-track {
+            background: rgba(212, 161, 30, 0.1);
+            border-radius: 10px;
+        }
+        
+        .lightbox-thumbnails::-webkit-scrollbar-thumb {
+            background: #d4a11e;
+            border-radius: 10px;
+        }
+        
+        .lightbox-thumbnails img {
+            width: 120px;
+            height: 90px;
+            object-fit: cover;
+            border-radius: 1rem;
+            cursor: pointer;
+            border: 3px solid transparent;
+            transition: all 0.3s;
+            flex-shrink: 0;
+            opacity: 0.7;
+            filter: grayscale(50%);
+        }
+        
+        .lightbox-thumbnails img:hover {
+            opacity: 1;
+            filter: grayscale(0%);
+            border-color: #d4a11e;
+            transform: translateY(-5px);
+        }
+        
+        .lightbox-thumbnails img.active {
+            opacity: 1;
+            filter: grayscale(0%);
+            border-color: #d4a11e;
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(212, 161, 30, 0.3);
+        }
+        
+        /* Lightbox footer */
+        .lightbox-footer {
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.75rem;
+            color: rgba(255,255,255,0.8);
+            font-size: 1.1rem;
+            font-weight: 400;
+            letter-spacing: 0.5px;
+        }
+        
+        .lightbox-footer .footer-logo {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: transparent;
+        }
+        
+        .lightbox-footer .footer-logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        
+        .lightbox-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: rgba(212, 161, 30, 0.2);
+            backdrop-filter: blur(5px);
+            border: 2px solid rgba(212, 161, 30, 0.5);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10002;
+        }
+        
+        .lightbox-nav:hover {
+            background: #d4a11e;
+            border-color: #d4a11e;
+            color: #0a3b2a;
+        }
+        
+        .lightbox-nav.prev { left: 1rem; }
+        .lightbox-nav.next { right: 1rem; }
+        
+        @media (max-width: 768px) {
+            .lightbox-nav { display: none; }
+            .lightbox-close { top: 1rem; right: 1rem; width: 48px; height: 48px; font-size: 1.5rem; }
+            .lightbox-thumbnails img { width: 80px; height: 60px; }
+            .album-card { width: 280px; }
+            @keyframes carouselScroll {
+                100% { transform: translateX(calc(-280px * 10 - 2rem * 10)); }
+            }
+        }
+
+        /* Compact footer - redesigned with less padding */
+        .footer-compact {
+            background-color: #0a3b2a;
+            color: #e5e7eb;
+            padding: 2rem 0 1rem;
+        }
+        
+        .footer-compact h5 {
+            color: #d4a11e;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-compact a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+        
+        .footer-compact a:hover {
+            color: #d4a11e;
+        }
+        
+        .footer-compact .social-icon-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,161,30,0.2);
+            color: #d1d5db;
+            transition: all 0.3s;
+            margin-right: 0.5rem;
+        }
+        
+        .footer-compact .social-icon-small:hover {
+            background: #d4a11e;
+            color: #0a3b2a;
+            border-color: #d4a11e;
+            transform: translateY(-3px);
+        }
+
+        /* Animation on scroll */
+        .animate-on-scroll {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-on-scroll.animated {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Aakash collaboration card - REMOVED PERMANENTLY */
+        
+        /* Section spacing - reduced */
+        section {
+            scroll-margin-top: 70px;
+        }
+        .py-16 {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+        }
+        .py-12 {
+            padding-top: 2rem;
+            padding-bottom: 2rem;
+        }
+        .mb-16 {
+            margin-bottom: 3rem;
+        }
+        .mb-10 {
+            margin-bottom: 2rem;
+        }
+        .mt-8 {
+            margin-top: 2rem;
+        }
+        .gap-6 {
+            gap: 1.25rem;
+        }
+        
+        /* Blog card with larger images */
+        .blog-card {
+            background: white;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px -10px rgba(10,126,74,0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+            height: 100%;
+        }
+        .blog-card:hover {
+            transform: translateY(-8px);
+            border-color: #d4a11e;
+            box-shadow: 0 25px 40px -12px rgba(10,126,74,0.3);
+        }
+        .blog-card-image {
+            height: 280px;
+            overflow: hidden;
+        }
+        .blog-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .blog-card:hover .blog-card-image img {
+            transform: scale(1.05);
+        }
+        .blog-card-content {
+            padding: 1.5rem;
+        }
+        .blog-card-content h3 {
+            color: #0a7e4a;
+            font-size: 1.3rem;
+            margin-bottom: 0.75rem;
+        }
+        .blog-card-content p {
+            color: #4a5568;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 1rem;
+        }
+        .read-more {
+            color: #d4a11e;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .read-more:hover {
+            color: #0a7e4a;
+        }
+
+        /* Enquiry form styles */
+        .enquiry-form {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 20px 35px -10px rgba(0,0,0,0.1);
+            border: 1px solid rgba(212,161,30,0.3);
+        }
+        .enquiry-form input, .enquiry-form select {
+            width: 100%;
+            padding: 0.75rem 1rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 1rem;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+            outline: none;
+            background: #fefefe;
+        }
+        .enquiry-form input:focus, .enquiry-form select:focus {
+            border-color: #d4a11e;
+            box-shadow: 0 0 0 3px rgba(212,161,30,0.2);
+        }
+        .enquiry-form label {
+            font-weight: 500;
+            color: #0a3b2a;
+            margin-bottom: 0.4rem;
+            display: block;
+            font-size: 0.85rem;
+        }
+        .submit-btn {
+            background: #0a7e4a;
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 2rem;
+            font-weight: 600;
+            width: 100%;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #d4a11e;
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" id="closeMenu">&times;</div>
+        <ul>
+            <li><a href="#home" class="mobile-nav-link">HOME</a></li>
+            <li><a href="#about" class="mobile-nav-link">ABOUT US</a></li>
+            <li><a href="#courses" class="mobile-nav-link">COURSES</a></li>
+            <li><a href="#gallery" class="mobile-nav-link">GALLERY</a></li>
+            <li><a href="#blogs" class="mobile-nav-link">BLOGS</a></li>
+            <li><a href="#contact" class="mobile-nav-link">CONTACT</a></li>
+        </ul>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- ===== TOP BAR with social media icons (desktop only) ===== -->
+    <div class="top-bar">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center gap-1"><i data-lucide="phone" class="w-4 h-4 text-accent"></i> +91 4572 59999 , +91 70221 23233 , +91 70221 08833</span>
+                <span class="flex items-center gap-1"><i data-lucide="mail" class="w-4 h-4 text-accent"></i> admissions@idpspu.edu.in</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="#" class="social-icon" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="YouTube">
+                    <i class="fab fa-youtube"></i>
+                </a>
+                <a href="#" class="social-icon" aria-label="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER with hamburger menu ===== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full overflow-hidden logo-transparent">
+                    <img src="images/logo_idps.png" alt="IDPS Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-primary/10 rounded-full items-center justify-center">
+                        <i data-lucide="school" class="w-6 h-6 text-primary"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-primary">IDPS PU College</h1>
+                    <p class="text-xs text-gray-600 font-medium">Pre‑University · Science & Commerce</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <nav class="hidden md:flex items-center space-x-8 nav-links">
+                    <a href="#home" class="nav-link text-sm lg:text-base">HOME</a>
+                    <a href="#about" class="nav-link text-sm lg:text-base">ABOUT US</a>
+                    <a href="#courses" class="nav-link text-sm lg:text-base">COURSES</a>
+                    <a href="#gallery" class="nav-link text-sm lg:text-base">GALLERY</a>
+                    <a href="#blogs" class="nav-link text-sm lg:text-base">BLOGS</a>
+                    <a href="#contact" class="nav-link text-sm lg:text-base">CONTACT</a>
+                </nav>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== HERO SECTION with school.jpeg image and 25 Years Stamp (visible only on desktop) ===== -->
+    <section id="home" class="hero-section text-white relative overflow-hidden">
+        <img src="images/zSchool4.jpg" alt="IDPS College Campus" class="hero-image" onerror="this.src='https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1500&q=80'">
+        <div class="hero-overlay"></div>
+        <div class="decor-1"></div>
+        <div class="decor-2"></div>
+        
+        <div class="excellence-stamp">
+            <div class="years">25</div>
+            <span>YEARS OF EXCELLENCE</span>
+        </div>
+        
+        <div class="container mx-auto px-4 py-16 md:py-20 lg:py-24 relative z-10 hero-content">
+            <div class="max-w-4xl mx-auto text-center">
+                <h2 class="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-4 animate__animated animate__fadeInUp">
+                    IDPS Pre‑University
+                </h2>
+                <h3 class="text-3xl md:text-4xl lg:text-5xl font-playfair font-bold text-accent/90 mb-6 animate__animated animate__fadeInUp animate__delay-1s">
+                    Excellence in Science & Commerce
+                </h3>
+                <p class="text-lg md:text-xl mb-8 opacity-90 animate__animated animate__fadeInUp animate__delay-1s max-w-2xl mx-auto">
+                    Where green campus meets gold‑standard teaching. State‑board & integrated coaching for future leaders.
+                </p>
+                <div class="animate__animated animate__fadeInUp animate__delay-2s flex flex-col sm:flex-row items-center justify-center gap-4">
+                    <a href="#contact" class="bg-accent text-dark px-8 py-3 md:px-10 md:py-4 rounded-full font-semibold hover:bg-[#c6931a] transition shadow-lg flex items-center gap-2">
+                        <i data-lucide="phone" class="w-5 h-5"></i> Enquiry
+                    </a>
+                    <span class="bg-white/20 backdrop-blur-sm px-6 py-3 md:px-8 md:py-4 rounded-full font-medium text-white border border-white/30 flex items-center gap-2">
+                        <i data-lucide="calendar" class="w-5 h-5"></i> Admissions open 2026
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== AAKASH COLLABORATION SECTION - REMOVED PERMANENTLY ===== -->
+
+    <!-- ===== ABOUT US ===== -->
+    <section id="about" class="py-12 md:py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 md:mb-10 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">About IDPS PU College</h2>
+                <div class="section-divider"></div>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">
+                    IDPS PU College, a unit of the International Delhi Public School Society, offers a transformative pre‑university experience. Our lush green campus and distinguished faculty nurture academic excellence, critical thinking, and holistic growth.
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-5 md:gap-6 mt-6">
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/30 hover:border-accent transition-all duration-300 animate-on-scroll text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="landmark" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Est. 2005</h3>
+                    <p class="text-gray-600">Two decades of academic excellence in pre‑university education.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/30 hover:border-accent transition-all duration-300 animate-on-scroll text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="graduation-cap" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Science & Commerce</h3>
+                    <p class="text-gray-600">Specialized streams with integrated IIT‑JEE/NEET/CA foundation.</p>
+                </div>
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/30 hover:border-accent transition-all duration-300 animate-on-scroll text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="trees" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Green Campus</h3>
+                    <p class="text-gray-600">Eco‑friendly 15‑acre campus with modern infrastructure.</p>
+                </div>
+                <!-- Skilled Teachers Card -->
+                <div class="bg-white p-6 md:p-8 rounded-2xl shadow-lg card-hover border-2 border-accent/30 hover:border-accent transition-all duration-300 animate-on-scroll text-center">
+                    <div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <i data-lucide="users" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-primary mb-3">Skilled Teachers</h3>
+                    <p class="text-gray-600">Experienced, passionate educators with innovative teaching methods.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COURSES SECTION ===== -->
+    <section id="courses" class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 md:mb-10 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">Courses</h2>
+                <div class="section-divider"></div>
+                <p class="text-base md:text-lg text-gray-600 max-w-3xl mx-auto">Comprehensive programs designed for academic excellence and competitive success</p>
+            </div>
+            
+            <!-- Program combinations with image cards like Competitive Courses -->
+            <div class="mb-12">
+                <div class="grid md:grid-cols-4 gap-6">
+                    <!-- PCMB + NEET/KCET Card -->
+                    <div class="course-detail-card">
+                        <div class="course-detail-image h-48">
+                            <img src="images/DSC_9414.jpeg" alt="PCMB NEET KCET">
+                        </div>
+                        <div class="course-detail-content p-5 text-center flex flex-col items-center justify-center">
+                            <h4 class="text-xl font-bold text-primary mb-2">PCMB + NEET/KCET</h4>
+                            <p class="text-xs text-gray-500 mt-2">NEET & KCET coaching by Aakash with expert faculty, mock tests, concept clarity, and personalized mentoring for top results.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- PCMC + JEE/KCET Card -->
+                    <div class="course-detail-card">
+                        <div class="course-detail-image h-48">
+                            <img src="images/DSC_9529.jpg" alt="PCMC JEE KCET">
+                        </div>
+                        <div class="course-detail-content p-5 text-center flex flex-col items-center justify-center">
+                            <h4 class="text-xl font-bold text-primary mb-2">PCMC + JEE/KCET</h4>
+                            <p class="text-xs text-gray-500 mt-2">Integrated coaching for JEE Main, JEE Advanced & KCET focused on problem solving, analytical skills, and time management, with regular tests and expert doubt support.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- CEBA + CA/CPT Card -->
+                    <div class="course-detail-card">
+                        <div class="course-detail-image h-48">
+                            <img src="images/DSC_9421.jpeg" alt="CEBA CA CPT">
+                        </div>
+                        <div class="course-detail-content p-5 text-center flex flex-col items-center justify-center">
+                            <h4 class="text-xl font-bold text-primary mb-2">CEBA + CA/CPT</h4>
+                            <p class="text-xs text-gray-500 mt-2">Specialized CA Foundation coaching with commerce studies, covering Accounts, Economics, Business Studies, and Quantitative Aptitude for a strong career foundation.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- MEBA + CA/CPT Card -->
+                    <div class="course-detail-card">
+                        <div class="course-detail-image h-48">
+                            <img src="images/DSC_9822.jpg" alt="MEBA CA CPT">
+                        </div>
+                        <div class="course-detail-content p-5 text-center flex flex-col items-center justify-center">
+                            <h4 class="text-xl font-bold text-primary mb-2">MEBA + CA/CPT</h4>
+                            <p class="text-xs text-gray-500 mt-2">Integrated Commerce program with Management, Economics, and CA Foundation coaching for careers in business, economics, and accountancy.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Subjects -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-playfair font-bold text-primary mb-6 text-center">Subjects</h3>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-9 gap-3">
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="atom" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Physics</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="flask-conical" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Chemistry</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="sigma" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Mathematics</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="dna" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Biology</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="laptop" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Computer Science</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="book-open" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">English</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="languages" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Kannada</h4>
+                    </div>
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="languages" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Hindi</h4>
+                    </div>
+                    <!-- Sanskrit Subject Card -->
+                    <div class="subject-card p-4">
+                        <div class="subject-icon w-12 h-12">
+                            <i data-lucide="scroll-text" class="w-6 h-6 text-primary"></i>
+                        </div>
+                        <h4 class="font-bold text-primary text-sm">Sanskrit</h4>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Competitive Courses - REMOVED COMPLETELY -->
+            
+            <!-- Exams We Prepare For -->
+            <div class="mb-12">
+                <h3 class="text-2xl font-playfair font-bold text-primary mb-6 text-center">Exams We Prepare For</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-gray-50 p-5 rounded-2xl border-2 border-accent/30">
+                        <h4 class="text-xl font-bold text-primary mb-2">Board Exams</h4>
+                        <p class="text-gray-600 text-sm">Pre-University (PU) board exams preparation with in-depth subject knowledge and exam strategies to ensure excellent performance.</p>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-2xl border-2 border-accent/30">
+                        <h4 class="text-xl font-bold text-primary mb-2">Competitive Exams</h4>
+                        <p class="text-gray-600 text-sm">NEET, JEE, KCET, NDA, Olympiads and other national-level exams with structured coaching and expert mentoring.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section - 6 cards -->
+            <div>
+                <h3 class="text-2xl font-playfair font-bold text-primary mb-6 text-center">Frequently Asked Questions</h3>
+                <div class="faq-grid">
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">1. What are the admission criteria?</h4>
+                        <p class="text-sm">Admission is based on merit and performance in the entrance test. Students who have completed 10th from a recognized board are eligible.</p>
+                    </div>
+                    
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">2. Does the college provide hostel facilities?</h4>
+                        <p class="text-sm">Yes, separate hostel facilities for boys and girls are available within the campus with modern amenities and 24/7 security.</p>
+                    </div>
+                    
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">3. What competitive exam coaching is available?</h4>
+                        <p class="text-sm">Integrated coaching for NEET, JEE, KCET, and other national-level entrance tests with experienced faculty and regular mock tests.</p>
+                    </div>
+                    
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">4. What is the fee structure?</h4>
+                        <p class="text-sm">The fee structure is affordable and competitive. Contact our admissions office or visit the college website for detailed information.</p>
+                    </div>
+                    
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">5. What transportation facilities are available?</h4>
+                        <p class="text-sm">A fleet of buses covers major routes across the city, ensuring safe and convenient transportation for day scholars.</p>
+                    </div>
+                    
+                    <!-- 6th FAQ Card -->
+                    <div class="faq-card p-5">
+                        <h4 class="text-base">6. What makes the teaching staff special?</h4>
+                        <p class="text-sm">Our faculty comprises experienced, passionate, and result-driven educators who provide personalized attention and mentorship.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INFINITE CAROUSEL - 20 cards ===== -->
+    <section id="gallery" class="py-12 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">Albums</h2>
+                <div class="section-divider"></div>
+                <!-- Updated text line -->
+                <p class="text-gray-600">Explore our campus moments · Click any card to view gallery</p>
+            </div>
+            
+            <div class="carousel-container">
+                <div class="carousel-track">
+                    <!-- SET 1 - 5 cards -->
+                    <div class="album-card" data-category="freshers">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Freshers">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Freshers</h3>
+                            <p>Welcome celebrations & memories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="laboratory">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_8332.jpeg" alt="Laboratory">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Laboratory</h3>
+                            <p>Science labs & experiments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="library">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_9652.jpg" alt="Library">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Library</h3>
+                            <p>Knowledge hub & reading spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="staff">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Staff">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Staff</h3>
+                            <p>Our dedicated faculty & team</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="campus">
+                        <div class="album-card-image">
+                            <img src="Images/zSchool4.jpg" alt="Campus">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Campus</h3>
+                            <p>Green campus & infrastructure</p>
+                        </div>
+                    </div>
+                    
+                    <!-- SET 2 - Duplicate -->
+                    <div class="album-card" data-category="freshers">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Freshers">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Freshers</h3>
+                            <p>Welcome celebrations & memories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="laboratory">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_8332.jpeg" alt="Laboratory">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Laboratory</h3>
+                            <p>Science labs & experiments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="library">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_9652.jpg" alt="Library">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Library</h3>
+                            <p>Knowledge hub & reading spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="staff">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Staff">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Staff</h3>
+                            <p>Our dedicated faculty & team</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="campus">
+                        <div class="album-card-image">
+                            <img src="Images/zSchool4.jpg" alt="Campus">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Campus</h3>
+                            <p>Green campus & infrastructure</p>
+                        </div>
+                    </div>
+                    
+                    <!-- SET 3 - Duplicate -->
+                    <div class="album-card" data-category="freshers">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Freshers">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Freshers</h3>
+                            <p>Welcome celebrations & memories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="laboratory">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_8332.jpeg" alt="Laboratory">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Laboratory</h3>
+                            <p>Science labs & experiments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="library">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_9652.jpg" alt="Library">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Library</h3>
+                            <p>Knowledge hub & reading spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="staff">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Staff">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Staff</h3>
+                            <p>Our dedicated faculty & team</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="campus">
+                        <div class="album-card-image">
+                            <img src="Images/zSchool4.jpg" alt="Campus">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Campus</h3>
+                            <p>Green campus & infrastructure</p>
+                        </div>
+                    </div>
+                    
+                    <!-- SET 4 - Duplicate -->
+                    <div class="album-card" data-category="freshers">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Freshers">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Freshers</h3>
+                            <p>Welcome celebrations & memories</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="laboratory">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_9652.jpg" alt="Laboratory">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Laboratory</h3>
+                            <p>Science labs & experiments</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="library">
+                        <div class="album-card-image">
+                            <img src="Images/DSC_9652.jpg" alt="Library">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Library</h3>
+                            <p>Knowledge hub & reading spaces</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="staff">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Staff">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Staff</h3>
+                            <p>Our dedicated faculty & team</p>
+                        </div>
+                    </div>
+                    
+                    <div class="album-card" data-category="campus">
+                        <div class="album-card-image">
+                            <img src="https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?w=600&q=80" alt="Campus">
+                        </div>
+                        <div class="album-card-content">
+                            <h3>Campus</h3>
+                            <p>Green campus & infrastructure</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOGS SECTION with large images ===== -->
+    <section id="blogs" class="py-12 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">Blogs</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600">Insights and updates from our college</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <!-- Blog 1 - redirects to blog1.html -->
+                <div class="blog-card" onclick="window.location.href='blog1.html'">
+                    <div class="blog-card-image">
+                        <img src="Images/DSC_9698.jpg" alt="Campus Life">
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Life at IDPS PU College</h3>
+                        <p>Discover the vibrant campus life at IDPS PU College, Ballari. From state-of-the-art laboratories to lush green gardens, our campus provides the perfect environment for academic excellence and personal growth. Students engage in various cultural and technical events throughout the year.</p>
+                        <span class="read-more">Read More <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Blog 2 - redirects to blog2.html -->
+                <div class="blog-card" onclick="window.location.href='blog2.html'">
+                    <div class="blog-card-image">
+                        <img src="Images/DSC_9336.jpeg" alt="Academic Excellence">
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Academic Excellence & Competitive Coaching</h3>
+                        <p>IDPS PU College offers integrated coaching for NEET, JEE, and KCET alongside the regular PU curriculum. Our collaboration with Aakash Educational Services ensures students receive expert guidance from experienced faculty, regular mock tests, and personalized mentoring.</p>
+                        <span class="read-more">Read More <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Blog 3 - redirects to blog3.html -->
+                <div class="blog-card" onclick="window.location.href='blog3.html'">
+                    <div class="blog-card-image">
+                        <img src="Images/DSC_9746.jpg" alt="Student Achievements">
+                    </div>
+                    <div class="blog-card-content">
+                        <h3>Student Achievements & Success Stories</h3>
+                        <p>Our students have consistently excelled in board exams and competitive tests. With a track record of top ranks in KCET and excellent NEET scores, IDPS PU College has become a preferred destination for aspiring medical and engineering students in Ballari.</p>
+                        <span class="read-more">Read More <i data-lucide="arrow-right" class="w-4 h-4"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PREMIUM LIGHTBOX ===== -->
+    <div class="lightbox" id="lightbox">
+        <div class="lightbox-content">
+            <div class="lightbox-close" id="lightboxClose">
+                <i class="fas fa-times"></i>
+            </div>
+            
+            <div class="lightbox-nav prev" id="prevBtn">
+                <i class="fas fa-chevron-left"></i>
+            </div>
+            <div class="lightbox-nav next" id="nextBtn">
+                <i class="fas fa-chevron-right"></i>
+            </div>
+            
+            <div class="lightbox-main">
+                <img id="lightboxImg" src="" alt="Campus Image">
+            </div>
+            
+            <div class="lightbox-thumbnails-container">
+                <div class="lightbox-thumbnails" id="thumbnails"></div>
+            </div>
+            
+            <!-- Footer with logo -->
+            <div class="lightbox-footer">
+                <div class="footer-logo">
+                    <img src="images/logo_idps.png" alt="IDPS Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-white/5 rounded-full items-center justify-center">
+                        <i data-lucide="school" class="w-5 h-5 text-accent"></i>
+                    </div>
+                </div>
+                <span>IDPS PU College</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CONTACT US ===== -->
+  <section id="contact" class="py-12 md:py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-8 animate-on-scroll">
+                <h2 class="text-3xl md:text-4xl font-playfair font-bold text-primary mb-4">Contact us</h2>
+                <div class="section-divider"></div>
+                <p class="text-gray-600">Get in touch for admissions, visits or any query</p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-6">
+                <!-- Left column with contact cards and map -->
+                <div class="space-y-4">
+                    <div class="bg-gray-50 p-5 rounded-2xl shadow-lg border-2 border-accent/30 hover:border-accent card-hover animate-on-scroll flex gap-4 items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><i data-lucide="map-pin" class="w-6 h-6 text-primary"></i></div>
+                        <div><h4 class="font-bold text-primary">Campus</h4><p class="text-gray-700 text-sm">IDPS Campus, Ballari, Karnataka 583103</p></div>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-2xl shadow-lg border-2 border-accent/30 hover:border-accent card-hover animate-on-scroll flex gap-4 items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><i data-lucide="phone" class="w-6 h-6 text-primary"></i></div>
+                        <div><h4 class="font-bold text-primary">Helpline</h4><p class="text-gray-700 text-sm">+91 94572 59999 , +91 70221 23233 , +91 70221 08833</p></div>
+                    </div>
+                    <div class="bg-gray-50 p-5 rounded-2xl shadow-lg border-2 border-accent/30 hover:border-accent card-hover animate-on-scroll flex gap-4 items-center">
+                        <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><i data-lucide="mail" class="w-6 h-6 text-primary"></i></div>
+                        <div><h4 class="font-bold text-primary">Email</h4><p class="text-gray-700 text-sm">admissions@idpspu.edu.in</p></div>
+                    </div>
+                    <!-- Map placed directly below Email with same style and size -->
+                    <div class="bg-gray-50 p-5 rounded-2xl shadow-lg border-2 border-accent/30 hover:border-accent card-hover animate-on-scroll">
+                        <div class="flex gap-4 items-center mb-3">
+                            <div class="w-12 h-12 bg-primary/10 rounded-full flex items-center justify-center"><i data-lucide="map" class="w-6 h-6 text-primary"></i></div>
+                            <h4 class="font-bold text-primary">Location Map</h4>
+                        </div>
+                        <div class="map-container">
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.987654321!2d76.123456!3d15.123456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTXCsDA3JzI0LjQiTiA3NsKwMDcnMjYuNCJF!5e0!3m2!1sen!2sin!4v1234567890" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        </div>
+                        <p class="text-gray-600 text-xs mt-3 text-center">IDPS Campus, CLR Smart City, Kappagal Road, Ballari</p>
+                    </div>
+                </div>
+                
+                <!-- Enquiry Form - Right column -->
+                <div class="enquiry-form animate-on-scroll">
+                    <h3 class="text-2xl font-playfair font-bold text-primary mb-4 text-center">Quick Enquiry</h3>
+                    <form id="enquiryForm" action="https://docs.google.com/forms/d/e/1FAIpQLSdummyFormID/formResponse" method="POST" target="_blank">
+                        <div class="mb-4">
+                            <label for="studentName">Student Name *</label>
+                            <input type="text" id="studentName" name="entry.1234567890" required placeholder="Enter full name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="parentName">Parent's Name *</label>
+                            <input type="text" id="parentName" name="entry.1234567891" required placeholder="Enter parent/guardian name">
+                        </div>
+                        <div class="mb-4">
+                            <label for="phoneNumber">Phone Number *</label>
+                            <input type="tel" id="phoneNumber" name="entry.1234567892" required placeholder="10-digit mobile number">
+                        </div>
+                        <div class="mb-5">
+                            <label for="courseInterest">Course Interested In *</label>
+                            <select id="courseInterest" name="entry.1234567893" required>
+                                <option value="">Select a course</option>
+                                <option value="PCMB + NEET/KCET">PCMB + NEET/KCET</option>
+                                <option value="PCMC + JEE/KCET">PCMC + JEE/KCET</option>
+                                <option value="CEBA + CA/CPT">CEBA + CA/CPT</option>
+                                <option value="MEBA + CA/CPT">MEBA + CA/CPT</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="submit-btn">Submit Enquiry →</button>
+                        <p class="text-xs text-gray-500 text-center mt-3">Your enquiry will be sent directly to our admissions team.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPACT FOOTER - Redesigned ===== -->
+    <footer class="footer-compact">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                            <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-contain">
+                        </div>
+                        <h5 class="text-lg font-playfair font-bold text-white">IDPS PU College</h5>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-3">
+                        A Unit of International Delhi Public School Society. Pioneering pre‑university education since 2005.
+                    </p>
+                    <div class="flex space-x-2">
+                        <a href="#" class="social-icon-small"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-small"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon-small"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5>Quick Links</h5>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#courses">Courses</a></li>
+                        <li><a href="#gallery">Gallery</a></li>
+                        <li><a href="#blogs">Blogs</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5>Campus Address</h5>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        IDPS Campus, CLR Smart City,<br> Kappagal Road, Ballari,<br> Karnataka - 583103
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://idpsballari.com/" class="text-xs text-gray-400 hover:text-accent">www.idpsballari.in</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5>Contact</h5>
+                    <p class="text-gray-300 text-sm font-bold mb-1">+91 94572 59999</p>
+                    <p class="text-gray-300 text-sm font-bold mb-1">+91 70221 23233</p>
+                     <p class="text-gray-300 text-sm font-bold mb-1">+91 70221 08833</p>
+                    <p class="text-gray-400 text-xs">Mon-Sat, 9am - 5pm</p>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-6 pt-4 text-center text-gray-500 text-xs">
+                © IDPS PU College
+            </div>
+        </div>
+    </footer>
+
+  
+    <script>
+        $(document).ready(function() {
+            // Lucide icons
+            lucide.createIcons();
+
+            // Smooth scroll with offset adjustment for fixed header
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = $($(this).attr('href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 70
+                    }, 500);
+                }
+            });
+
+            // Animate on scroll
+            const animateElements = $('.animate-on-scroll');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        $(entry.target).addClass('animated');
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            animateElements.each(function() {
+                observer.observe(this);
+            });
+            
+            $(window).on('load', function() {
+                animateElements.each(function() {
+                    if ($(this).offset().top < $(window).height() - 50) {
+                        $(this).addClass('animated');
+                    }
+                });
+                lucide.createIcons();
+            });
+
+            // Enquiry form submission with Google Form integration
+            $('#enquiryForm').on('submit', function(e) {
+                const studentName = $('#studentName').val();
+                const parentName = $('#parentName').val();
+                const phone = $('#phoneNumber').val();
+                const course = $('#courseInterest').val();
+                
+                if(!studentName || !parentName || !phone || !course) {
+                    e.preventDefault();
+                    alert('Please fill all required fields.');
+                    return;
+                }
+                if(!/^\d{10}$/.test(phone)) {
+                    e.preventDefault();
+                    alert('Please enter a valid 10-digit phone number.');
+                    return;
+                }
+                
+                // Form will submit to Google Form in a new tab
+                // Success message will show after form redirects
+                setTimeout(function() {
+                    alert('Thank you for your enquiry! Our admissions team will contact you soon.');
+                }, 100);
+            });
+            
+            // ===== LIGHTBOX FUNCTIONALITY =====
+            const $lightbox = $('#lightbox');
+            const $lightboxImg = $('#lightboxImg');
+            const $closeBtn = $('#lightboxClose');
+            const $prevBtn = $('#prevBtn');
+            const $nextBtn = $('#nextBtn');
+            const $thumbnailsContainer = $('#thumbnails');
+            
+            const categoryImages = {
+                freshers: [
+                    { url: 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=1200&q=80', caption: 'Freshers Welcome 2026' },
+                    { url: 'https://images.unsplash.com/photo-1541339907198-e08756dedf3f?w=1200&q=80', caption: 'Freshers Cultural Program' },
+                    { url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80', caption: 'Freshers Group Photo' }
+                ],
+                laboratory: [
+                    { url: 'Images/DSC_8291.jpeg', caption: 'Physics Lab' },
+                    { url: 'Images/DSC_8410.jpeg', caption: 'Physics Lab' },
+                    { url: 'Images/DSC_8300.jpeg', caption: 'Physics Lab' },
+                    { url: 'Images/DSC_9482.jpeg', caption: 'computer Lab' },
+                    { url: 'Images/DSC_9854.jpg', caption: 'computer Lab' },
+                     { url: 'Images/DSC_8763.jpeg', caption: 'computer Lab' }
+                ],
+                library: [
+                    { url: 'Images/DSC_9634.jpg', caption: 'Library Reading Room' },
+                    { url: 'Images/DSC_9638.jpg', caption: 'Library Study Area' },
+                    { url: 'Images/DSC_9640.jpg', caption: 'Book Collection' },
+                    { url: 'Images/DSC_9644.jpg', caption: 'Book Collection' },
+                    { url: 'Images/DSC_9659.jpg', caption: 'Library Study Area' },
+                    { url: 'Images/DSC_9660.jpg', caption: 'Library Study Area' },
+                    { url: 'Images/DSC_9663.jpg', caption: 'Library Reading Room' },
+                ],
+                staff: [
+                    { url: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1200&q=80', caption: 'Teaching Staff' },
+                    { url: 'https://images.unsplash.com/photo-1522778526097-ce0a22ceb253?w=1200&q=80', caption: 'Faculty Meeting' }
+                ],
+                campus: [
+                    {  url: 'Images/DJI_20241127091018_0143_D121424.jpg', caption: 'Campus'},
+                    {  url: 'Images/DJI_20241127091630_0153_D121424.jpg', caption: 'Campus'}
+                ]
+            };
+            
+            let currentImages = [];
+            let currentIndex = 0;
+            
+            $('.album-card').on('click', function() {
+                const category = $(this).data('category');
+                currentImages = categoryImages[category];
+                currentIndex = 0;
+                updateLightbox();
+                $lightbox.addClass('active');
+                $('body').css('overflow', 'hidden');
+            });
+            
+            $closeBtn.on('click', function() {
+                $lightbox.removeClass('active');
+                $('body').css('overflow', 'auto');
+            });
+            
+            $prevBtn.on('click', function() {
+                currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                updateLightbox();
+            });
+            
+            $nextBtn.on('click', function() {
+                currentIndex = (currentIndex + 1) % currentImages.length;
+                updateLightbox();
+            });
+            
+            $(document).on('keydown', function(e) {
+                if (!$lightbox.hasClass('active')) return;
+                
+                if (e.key === 'Escape') {
+                    $lightbox.removeClass('active');
+                    $('body').css('overflow', 'auto');
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+                    updateLightbox();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % currentImages.length;
+                    updateLightbox();
+                }
+            });
+            
+            $lightbox.on('click', function(e) {
+                if (e.target === $lightbox[0]) {
+                    $lightbox.removeClass('active');
+                    $('body').css('overflow', 'auto');
+                }
+            });
+            
+            function updateLightbox() {
+                if (!currentImages.length) return;
+                
+                $lightboxImg.attr('src', currentImages[currentIndex].url);
+                $lightboxImg.attr('alt', currentImages[currentIndex].caption);
+                
+                $thumbnailsContainer.empty();
+                $.each(currentImages, function(index, img) {
+                    const $thumb = $('<img>', {
+                        src: img.url,
+                        alt: img.caption,
+                        class: index === currentIndex ? 'active' : ''
+                    });
+                    $thumb.on('click', function(e) {
+                        e.stopPropagation();
+                        currentIndex = index;
+                        updateLightbox();
+                    });
+                    $thumbnailsContainer.append($thumb);
+                });
+                
+                setTimeout(() => {
+                    const $activeThumb = $thumbnailsContainer.find('.active');
+                    if ($activeThumb.length) {
+                        $activeThumb[0].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                    }
+                }, 100);
+            }
+            
+            // Mobile menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    menuOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu) {
+                closeMenu.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', closeMobileMenu);
+            }
+            
+            // Close mobile menu when a navigation link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+            
+            window.closeMobileMenu = closeMobileMenu;
+        });
+    </script>
+</body>
+</html>

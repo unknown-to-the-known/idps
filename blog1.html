@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Life at IDPS PU College | IDPS Blog</title>
+    <!-- Tailwind -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts: Poppins + Playfair Display -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#0a7e4a',
+                        secondary: '#0f5c3f',
+                        accent: '#d4a11e',
+                        light: '#f0f9f3',
+                        dark: '#0a3b2a',
+                    },
+                    fontFamily: {
+                        'poppins': ['Poppins', 'sans-serif'],
+                        'playfair': ['Playfair Display', 'serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #ffffff;
+            color: #1e293b;
+        }
+        h1, h2, h3, .font-serif, .font-playfair {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        /* Top bar - hidden on mobile, visible on desktop */
+        .top-bar {
+            background-color: #0a3b2a;
+            color: #e5e7eb;
+            padding: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+        .top-bar a {
+            color: #d4a11e;
+            transition: color 0.3s;
+        }
+        .top-bar a:hover {
+            color: #ffffff;
+        }
+        .top-bar .social-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: rgba(212, 161, 30, 0.1);
+            color: #d4a11e;
+            transition: all 0.3s;
+            margin-left: 0.5rem;
+        }
+        .top-bar .social-icon:hover {
+            background: #d4a11e;
+            color: #0a3b2a;
+            transform: translateY(-2px);
+        }
+        
+        /* Hide top bar on mobile */
+        @media (max-width: 768px) {
+            .top-bar {
+                display: none;
+            }
+        }
+        
+        /* Mobile menu */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 280px;
+            height: 100vh;
+            background-color: white;
+            z-index: 9999;
+            box-shadow: -5px 0 20px rgba(0,0,0,0.1);
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #0a7e4a;
+        }
+        
+        .mobile-menu ul {
+            margin-top: 3rem;
+        }
+        
+        .mobile-menu li {
+            margin-bottom: 1.2rem;
+        }
+        
+        .mobile-menu a {
+            color: #1e293b;
+            font-weight: 500;
+            font-size: 1.1rem;
+            display: block;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        
+        .mobile-menu a:hover {
+            color: #0a7e4a;
+        }
+        
+        .menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 9998;
+            display: none;
+        }
+        
+        .menu-overlay.active {
+            display: block;
+        }
+        
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            margin-left: 1rem;
+        }
+        
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background-color: #0a7e4a;
+            margin: 3px 0;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+        
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+            
+            .nav-links {
+                display: none !important;
+            }
+        }
+        
+        /* Navigation */
+        .nav-link {
+            position: relative;
+            font-weight: 500;
+            color: #2d3a35;
+            transition: 0.2s;
+        }
+        .nav-link:hover {
+            color: #0a7e4a;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #d4a11e;
+            transition: width 0.3s;
+        }
+        .nav-link:hover::after,
+        .nav-link.active::after {
+            width: 100%;
+        }
+        .nav-link.active {
+            color: #0a7e4a;
+        }
+        
+        /* Logo */
+        .logo-img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+        .logo-transparent {
+            background: transparent !important;
+        }
+        
+        /* Blog Hero */
+        .blog-hero {
+            position: relative;
+            overflow: hidden;
+            height: 60vh;
+            min-height: 500px;
+            display: flex;
+            align-items: center;
+        }
+        .blog-hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+        .blog-hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(10,126,74,0.85) 0%, rgba(15,92,63,0.9) 100%);
+            z-index: 1;
+        }
+        .blog-hero-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Blog content */
+        .blog-content {
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+        .blog-content h2 {
+            color: #0a7e4a;
+            margin: 2rem 0 1rem;
+        }
+        .blog-content p {
+            margin-bottom: 1.5rem;
+            color: #4a5568;
+        }
+        .blog-content blockquote {
+            border-left: 4px solid #d4a11e;
+            padding-left: 1.5rem;
+            font-style: italic;
+            margin: 2rem 0;
+            color: #2d3a35;
+            font-size: 1.1rem;
+        }
+        .blog-content .feature-image {
+            border-radius: 1rem;
+            margin: 2rem 0;
+            box-shadow: 0 20px 40px -10px rgba(10,126,74,0.2);
+        }
+        
+        /* Related blog card */
+        .related-card {
+            background: white;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -8px rgba(10,126,74,0.15);
+            transition: all 0.3s;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        .related-card:hover {
+            transform: translateY(-5px);
+            border-color: #d4a11e;
+        }
+        .related-card-image {
+            height: 180px;
+            overflow: hidden;
+        }
+        .related-card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        .related-card:hover .related-card-image img {
+            transform: scale(1.05);
+        }
+        .related-card-content {
+            padding: 1rem;
+        }
+        .related-card-content h4 {
+            color: #0a7e4a;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        /* Footer compact */
+        .footer-compact {
+            background-color: #0a3b2a;
+            color: #e5e7eb;
+            padding: 2rem 0 1rem;
+        }
+        .footer-compact h5 {
+            color: #d4a11e;
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+        }
+        .footer-compact a {
+            color: #9ca3af;
+            transition: color 0.3s;
+        }
+        .footer-compact a:hover {
+            color: #d4a11e;
+        }
+        .footer-compact .social-icon-small {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(212,161,30,0.2);
+            color: #d1d5db;
+            transition: all 0.3s;
+            margin-right: 0.5rem;
+        }
+        .footer-compact .social-icon-small:hover {
+            background: #d4a11e;
+            color: #0a3b2a;
+            border-color: #d4a11e;
+            transform: translateY(-3px);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .blog-hero {
+                min-height: 400px;
+            }
+            .blog-hero h1 {
+                font-size: 2.5rem;
+            }
+            .blog-content {
+                padding: 0 1rem;
+            }
+            .blog-content .feature-image {
+                height: auto;
+                max-height: 300px;
+                object-fit: cover;
+            }
+            .related-card {
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <!-- ===== MOBILE MENU ===== -->
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" id="closeMenu">&times;</div>
+        <ul>
+            <li><a href="index.html" class="mobile-nav-link">HOME</a></li>
+            <li><a href="index.html#about" class="mobile-nav-link">ABOUT US</a></li>
+            <li><a href="index.html#courses" class="mobile-nav-link">COURSES</a></li>
+            <li><a href="index.html#gallery" class="mobile-nav-link">GALLERY</a></li>
+            <li><a href="index.html#blogs" class="mobile-nav-link active">BLOGS</a></li>
+            <li><a href="index.html#contact" class="mobile-nav-link">CONTACT</a></li>
+        </ul>
+    </div>
+    <div class="menu-overlay" id="menuOverlay"></div>
+
+    <!-- ===== TOP BAR ===== -->
+    <div class="top-bar">
+        <div class="container mx-auto px-4 flex flex-wrap justify-between items-center">
+            <div class="flex items-center space-x-6">
+                <span class="flex items-center gap-1"><i data-lucide="phone" class="w-4 h-4 text-accent"></i> +91 73492 54789 , +91 81972 83233</span>
+                <span class="flex items-center gap-1"><i data-lucide="mail" class="w-4 h-4 text-accent"></i> admissions@idpspu.edu.in</span>
+            </div>
+            <div class="flex items-center space-x-2">
+                <a href="#" class="social-icon" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== HEADER with hamburger menu ===== -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-sm">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-3 flex flex-wrap justify-between items-center">
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full overflow-hidden logo-transparent">
+                    <img src="images/logo_idps.png" alt="IDPS Logo" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+                    <div class="hidden w-full h-full bg-primary/10 rounded-full items-center justify-center">
+                        <i data-lucide="school" class="w-6 h-6 text-primary"></i>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="text-lg sm:text-xl md:text-2xl font-bold text-primary">IDPS PU College</h1>
+                    <p class="text-xs text-gray-600 font-medium">Pre‑University · Science & Commerce</p>
+                </div>
+            </div>
+            
+            <div class="flex items-center">
+                <nav class="hidden md:flex items-center space-x-8 nav-links">
+                    <a href="index.html" class="nav-link text-sm lg:text-base">HOME</a>
+                    <a href="index.html#about" class="nav-link text-sm lg:text-base">ABOUT US</a>
+                    <a href="index.html#courses" class="nav-link text-sm lg:text-base">COURSES</a>
+                    <a href="index.html#gallery" class="nav-link text-sm lg:text-base">GALLERY</a>
+                    <a href="index.html#blogs" class="nav-link text-sm lg:text-base active">BLOGS</a>
+                    <a href="index.html#contact" class="nav-link text-sm lg:text-base">CONTACT</a>
+                </nav>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== BLOG HERO SECTION ===== -->
+    <section class="blog-hero">
+        <img src="Images/DSC_9698.jpg" alt="IDPS Campus Life" class="blog-hero-image">
+        <div class="blog-hero-overlay"></div>
+        <div class="container mx-auto px-4 relative z-10 blog-hero-content">
+            <span class="inline-block bg-accent text-dark px-4 py-1 rounded-full text-sm font-semibold mb-4 animate__animated animate__fadeInUp">Campus Life</span>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-playfair font-bold mb-4 animate__animated animate__fadeInUp">Life at IDPS PU College</h1>
+            <div class="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 text-white/80 animate__animated animate__fadeInUp animate__delay-1s">
+                <span class="flex items-center gap-1"><i data-lucide="calendar" class="w-4 h-4"></i> March 18, 2026</span>
+                <span class="flex items-center gap-1"><i data-lucide="user" class="w-4 h-4"></i> By Admin</span>
+                <span class="flex items-center gap-1"><i data-lucide="clock" class="w-4 h-4"></i> 5 min read</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BLOG CONTENT ===== -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="blog-content">
+                <p class="text-lg text-gray-700 lead">Discover the vibrant campus life at IDPS PU College, Ballari. From state-of-the-art laboratories to lush green gardens, our campus provides the perfect environment for academic excellence and personal growth.</p>
+                
+                <h2>A Campus Built for Learning</h2>
+                <p>Spread across 15 acres of lush green landscape, IDPS PU College offers an environment that inspires learning and creativity. The campus features modern architectural designs that blend seamlessly with nature, creating a peaceful atmosphere conducive to focused study.</p>
+                
+                <img src="Images/DSC_9640.jpg" alt="Academic Block" class="feature-image w-full">
+                
+                <h2>State-of-the-Art Laboratories</h2>
+                <p>Our physics, chemistry, and biology laboratories are equipped with the latest instruments and safety equipment. Students get hands-on experience with experiments that reinforce theoretical concepts. The computer science lab features high-performance systems with the latest software for programming and design courses.</p>
+                
+                <blockquote>
+                    "The practical exposure we get in the labs is exceptional. It has helped me understand complex concepts easily and prepared me well for competitive exams like NEET." – <strong>Priya S., II PUC Student</strong>
+                </blockquote>
+                
+                <h2>Library & Resource Center</h2>
+                <p>The two-story library houses over 12,000 books, including reference materials, competitive exam guides, and digital resources. The reading garden adjacent to the library provides a serene spot for students to study amidst nature. Regular workshops on research skills and digital literacy are conducted here.</p>
+                
+                <img src="Images/DSC_9659.jpg" alt="Library" class="feature-image w-full">
+                
+                <h2>Sports and Fitness</h2>
+                <p>Physical fitness is an integral part of our curriculum. The college boasts a full-size football field, basketball and tennis courts, an indoor badminton facility, and a modern gymnasium. Trained coaches guide students in various sports, and inter-house tournaments are held throughout the year.</p>
+                
+                <h2>Cultural Activities and Events</h2>
+                <p>Life at IDPS is not just about academics. The annual cultural fest, freshers' party, sendoff, and various club activities ensure holistic development. Students participate in debates, quizzes, music, dance, and drama, showcasing their talents and building confidence.</p>
+                
+                <img src="Images/DSC_9724.jpg" alt="Cultural Event" class="feature-image w-full">
+                
+                <h2>Hostel Life</h2>
+                <p>Separate hostel facilities for boys and girls offer a home away from home. Nutritious meals, 24/7 security, Wi-Fi connectivity, and common rooms with recreational activities ensure students feel comfortable and focused on their studies. Wardens and mentors provide guidance and support.</p>
+                
+                <p>The campus also features a spacious cafeteria serving hygienic and nutritious meals, an amphitheater for outdoor events, and plenty of green spaces for students to relax and interact. At IDPS PU College, every day brings new opportunities for learning, growth, and friendship.</p>
+                
+                <div class="bg-light p-6 rounded-2xl border-2 border-accent/30 mt-8">
+                    <h3 class="text-xl font-playfair font-bold text-primary mb-3">Admissions Open for 2026-27</h3>
+                    <p class="text-gray-700 mb-4">Join IDPS PU College, Ballari, and experience a transformative pre‑university education. Limited seats available for Science and Commerce streams.</p>
+                    <a href="index.html#contact" class="inline-flex items-center gap-2 bg-primary text-white px-6 py-3 rounded-full font-semibold hover:bg-secondary transition">
+                        <i data-lucide="phone" class="w-4 h-4"></i> Enquire Now
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RELATED BLOGS ===== -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <h3 class="text-2xl md:text-3xl font-playfair font-bold text-primary mb-8 text-center">You May Also Like</h3>
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <!-- Blog 2 -->
+                <div class="related-card" onclick="window.location.href='blog2.html'">
+                    <div class="related-card-image">
+                        <img src="Images/DSC_9336.jpeg" alt="Academic Excellence">
+                    </div>
+                    <div class="related-card-content">
+                        <h4>Academic Excellence & Competitive Coaching</h4>
+                        <p class="text-sm text-gray-600">Integrated coaching for NEET, JEE, and KCET with expert faculty from Aakash.</p>
+                        <span class="text-accent text-sm font-semibold inline-flex items-center gap-1 mt-2">Read More <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+                
+                <!-- Blog 3 -->
+                <div class="related-card" onclick="window.location.href='blog3.html'">
+                    <div class="related-card-image">
+                        <img src="Images/DSC_9746.jpg" alt="Student Achievements">
+                    </div>
+                    <div class="related-card-content">
+                        <h4>Student Achievements & Success Stories</h4>
+                        <p class="text-sm text-gray-600">Our students excel in board exams and competitive tests with top ranks.</p>
+                        <span class="text-accent text-sm font-semibold inline-flex items-center gap-1 mt-2">Read More <i data-lucide="arrow-right" class="w-3 h-3"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== COMPACT FOOTER ===== -->
+    <footer class="footer-compact">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6">
+                <div>
+                    <div class="flex items-center gap-2 mb-3">
+                        <div class="w-10 h-10 rounded-full overflow-hidden">
+                            <img src="images/logo_idps.png" alt="IDPS Logo" class="w-full h-full object-contain">
+                        </div>
+                        <h5 class="text-lg font-playfair font-bold text-white">IDPS PU College</h5>
+                    </div>
+                    <p class="text-gray-400 text-xs leading-relaxed mb-3">
+                        A Unit of International Delhi Public School Society. Pioneering pre‑university education since 2005.
+                    </p>
+                    <div class="flex space-x-2">
+                        <a href="#" class="social-icon-small"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon-small"><i class="fab fa-youtube"></i></a>
+                        <a href="#" class="social-icon-small"><i class="fab fa-facebook-f"></i></a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5>Quick Links</h5>
+                    <ul class="text-xs space-y-2">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="index.html#about">About Us</a></li>
+                        <li><a href="index.html#courses">Courses</a></li>
+                        <li><a href="index.html#gallery">Gallery</a></li>
+                        <li><a href="index.html#blogs">Blogs</a></li>
+                        <li><a href="index.html#contact">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h5>Campus Address</h5>
+                    <p class="text-gray-400 text-xs leading-relaxed">
+                        IDPS Campus, CLR Smart City,<br> Kappagal Road, Ballari,<br> Karnataka - 583103
+                    </p>
+                    <div class="pt-2">
+                        <a href="https://idpsballari.com/" class="text-xs text-gray-400 hover:text-accent">www.idpsballari.in</a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h5>Contact</h5>
+                    <p class="text-gray-300 text-sm font-bold mb-1">+91 73492 54789</p>
+                    <p class="text-gray-300 text-sm font-bold mb-1">+91 81972 83233</p>
+                    <p class="text-gray-400 text-xs">Mon-Sat, 9am - 5pm</p>
+                </div>
+            </div>
+            <div class="border-t border-white/10 mt-6 pt-4 text-center text-gray-500 text-xs">
+                © IDPS PU College
+                 <!-- <a href="https://Revisewell.com" target="_blank">Made With ❤️ Revisewell</a>  -->
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        $(document).ready(function() {
+            lucide.createIcons();
+            
+            // Smooth scroll for anchor links (if any)
+            $('a[href^="#"]').on('click', function(e) {
+                e.preventDefault();
+                const target = $($(this).attr('href'));
+                if (target.length) {
+                    $('html, body').animate({
+                        scrollTop: target.offset().top - 70
+                    }, 500);
+                }
+            });
+            
+            // Mobile menu functionality
+            const hamburger = document.getElementById('hamburger');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const menuOverlay = document.getElementById('menuOverlay');
+            const closeMenu = document.getElementById('closeMenu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+            
+            function closeMobileMenu() {
+                mobileMenu.classList.remove('active');
+                menuOverlay.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+            
+            if (hamburger) {
+                hamburger.addEventListener('click', function() {
+                    mobileMenu.classList.add('active');
+                    menuOverlay.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            }
+            
+            if (closeMenu) {
+                closeMenu.addEventListener('click', closeMobileMenu);
+            }
+            
+            if (menuOverlay) {
+                menuOverlay.addEventListener('click', closeMobileMenu);
+            }
+            
+            // Close mobile menu when a navigation link is clicked
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    closeMobileMenu();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
